@@ -7,8 +7,8 @@
 #include <assert.h>
 
 
-// double GetTime();
-// void Spin(int);
+double GetTime();
+void Spin(int);
 /*
 Including the inline keyword to supress the ODR (a translation unit such as a function can have many declaration but only one definition, hence ODR - One Definition Rule) warning message from the compiler.
 Note to myself: the inline keyword allows for multiple definitions of a particular function, but it implies 
