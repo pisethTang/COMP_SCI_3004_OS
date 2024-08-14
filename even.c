@@ -17,10 +17,10 @@ int main(int argc, char* argv[]){
         if (i % 2 == 0) 
         {
             printf("%d", i);
-            sleep(3);
+            sleep(5);
         }
-        scanf("");
-        printf("scanned %d\n", i);
+        // scanf("");
+        // printf("scanned %d\n", i);
         // printf("bye %d", i);
     }
     printf("\n");
