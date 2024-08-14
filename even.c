@@ -20,11 +20,11 @@ void handle_sigint(int sig){
 int main(int argc, char *argv[]){
     printf("PID: %d", getpid());
     int n = 0;
-    if (argc < 2){
-        printf("Please enter an argument.\n");
-        exit(1);
-    }
-    else{// argc >= 2 (although we want it to be exactly 2)
+    // if (argc < 2){
+    //     // printf("Please enter an argument.\n");
+    //     exit(1);
+    // }
+    // else{// argc >= 2 (although we want it to be exactly 2)
         
         // Register signal handlers 
         signal(SIGHUP, handle_sigint); 
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
 
 
 
-    }
+    // }
 
 
     return 0;
