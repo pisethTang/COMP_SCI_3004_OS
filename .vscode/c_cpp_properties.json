@@ -10,7 +10,10 @@
       "cppStandard": "${default}",
       "intelliSenseMode": "linux-gcc-x64",
       "compilerArgs": [
-        ""
+        "-g",
+        "-pthread",
+        "${file}",
+        "-o"
       ]
     }
   ],
