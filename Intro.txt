@@ -1,0 +1,11 @@
+CPU contains special purpose registers
+They are 64-bit registers for our purpose.
+rdi
+rsi
+rdx 
+
+Basic operations 
+mov rdi, 8 // move the constant value 8 into the register rdi 
+mov rdi, rsi // move content in rsi into rdi 
+mov rdi, qwordptr[rsi] // take value out of memory and put it into a register 
+mov qwordptr[rsi], rdi // take value out of register and put into memory 
