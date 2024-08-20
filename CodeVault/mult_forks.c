@@ -25,13 +25,13 @@ int main(int argc, char** argv){
         else printf("We are the parent process.\n");
     }
     /*
-    Expected: Should print out one of the above conditions. 
+    Expected: Should print out one of the above messages/ all conditions must be met. 
     */
 
 
 
     /*
-        Now, how do we process     
+        Now, how do we wait for all of the processes to finish? Not trivial... 
     */
 
 
