@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 	FILE	*trace;
 
 	/*
-	The simulator accepts 4 arguments, although the whole program of course accepts 5 with the first one being the program's anme.
+	The simulator accepts 4 arguments, although the whole program, of course, an extra argument being the program's name.
 	arg[0]: memsim.c
 	arg[1]: The name of the memory trace file to use.
 	arg[2]: The number of page frames in the simulated memory.
