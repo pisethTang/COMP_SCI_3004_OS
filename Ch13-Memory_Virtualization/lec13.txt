@@ -1,0 +1,61 @@
+3. The Abstraction: Address Space 
+
+
+- How to virtualize the memory? This is the OS Job.
+
++ What is memory virtualization? 
+- OS virtualizes its physical memory
+- OS provides an illusion memory space per process. 
+- As if "each process uses the whole memory"
+
++ Benefits: 
+- Ease of use in programming (programmers don't need to know where the data/code are stoed)
+- Memory efficiency 
+- Guarantee of isolation from other possibly malignant processes
+
+
++ OS in early systems(the early batch system) 
+- OS is just a library 
+- Load only 1 process in memory ==> poor CU utilization and memory efficiency (CPU is idle when the process id doing I/O) Better approach: what if we can place more processes in the memory? 
+
+
+Solution: multiprogrmaming and time-sharing 
+- Load multiple processes in memory (execute one for a short while, switch between processes in memroy, increases cpu utilization and memory efficiency as a result.) =====> Systems became more interactive compared to doing just batch-processing. 
+
+But that introduced a protection issue: what if a user process accesses another user process, or even the kernel? 
+
+To support multiprogrmaming and time sharing, OS creates an abstraction of physical memory. The address space/mapping contains all information aabout a running process. Given the statically built process, the address space typically consists of program code, heap, stack, and other important memory reguions such as a mapping between shared memory for shared library. 
+
+
+Code: where instructions live 
+Heap: dynamically allocayed in memory (malloc() in C, and new in object-oriented language)
+Stack: stores return addresses during function calls or functions. Contains local variables, actual parameters to functions. 
+
+
+The difference: the stack grows downwards in the memory and the heap grows upward, i.e., when we allocate more memory in the heap, the heap grows from low-value address to high-value addresses and if memory is allocated in the stack, the stack will decrease from high-value to low-value address. 
+
+Every address in a running program (a processes) is virtual OS translates the virtual addess to physical address. 
+
+
+Address Space layout Randomization (ASLR): a technique used to increase the difficulty of performing a buffer overflow attack that requires attackers to know the location of an executable in memory. 
+
+
+
+// Goals for a VM System
+
+- transparency: implementation should be invisible to a process. Process behaves as if it has its own private physical memory. 
+- efficiency: In terms of time (not make the process run slowly) and space (not much overhead in memory use).Will mneed to reply on hardware support (TLBs)
+
+- protection and isolation: prevent a user process from accessing other user processes, or the kernel. 
+
+
+
+
+
+
+
+
+
+
+
+

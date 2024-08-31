@@ -1,0 +1,16 @@
+1. Checked. 
+2. After running free --mega and --giga in my system, I received the following output:
+
+ ⚙  sething2002   Three_Easy_Pieces_Learning  free --mega 
+               total        used        free      shared  buff/cache   available
+Mem:           16679        4665       11376           3         636       11695
+Swap:           4294           0        4294
+---------------------------------------------------------------------------
+               
+ [..UoA/s2/COMP_SCI_3004_OS/Ch13-Memory_Virtualization/homework_13]
+ ⚙  sething2002   Three_Easy_Pieces_Learning  free --giga
+               total        used        free      shared  buff/cache   available
+Mem:              16           4          11           0           0          11
+Swap:              4           0           4
+
+I have around 16GB of memory in my Linux Subsystem. Abpit 11GB is free. I am not sure if I am fit to answer the last question, about whether it matches my intuition or not. 
