@@ -1,0 +1,1 @@
+This is some random content in the file let's read it in using a different function called fgets!
