@@ -4,8 +4,8 @@
 
 
 typedef struct {
-        int pageNo;   // page number
-        int modified; // dirty bit 
+    int pageNo;   // page number
+    int modified; // dirty bit 
 } page;
 
 
