@@ -19,10 +19,10 @@ Clock: 3
 */
 
 /*=====================================To-Do====================================*/
-int     createMMU( int);
-int     checkInMemory( int ) ;
-int     allocateFrame( int ) ;
-page    selectVictim( int, enum repl) ;
+int     createMMU(int);
+int     checkInMemory(int);
+int     allocateFrame(int);
+page    selectVictim(int, enum repl);
 /*=====================================To-Do====================================*/
 
 
