@@ -3,76 +3,78 @@
 #include <stdlib.h>
 
 
+
+
+
 typedef struct {
     int pageNo;   // page number
     int modified; // dirty bit 
+    int frameNo;  // frame number in physical memory
+    int lastUsed; // last used time for LRU
 } page;
 
+enum repl { Random, Fifo, Lru, Clock }; // Replacement algorithms
 
-enum repl { Random, Fifo, Lru, Clock};
-/*
-By default: 
-Random: 0
-Fifo: 1
-Lru: 2
-Clock: 3
-*/
-
-/*=====================================To-Do====================================*/
-int  createMMU(int);
-int  checkInMemory(int);
-int  allocateFrame(int);
-page selectVictim(int, enum repl);
-/*=====================================To-Do====================================*/
-
-
-
-const int physicalMemorySize = 4096;
-/* Page size is fixed to 4 KB ==> offset = log_2(4096) = */
 const int pageoffset = 12;    
-int numFrames = physicalMemorySize / pageoffset;
+int numFrames; // Number of frames, given by the user.
+page *pageTable; // Array representing the page table.
+int *frameTable; // Array representing frames in physical memory.
+int clockPointer = 0; // Pointer for the clock algorithm
+int currentTime = 0;  // Time counter for LRU
 
-// The frame offset := number of bits required to represent a word in a frame.
-// Frame offset = Page offset 
-// ====> numFrames = physicalMemorySize/Page offset
+// Initializes the MMU and page table.
+int createMMU(int frames) {
+    numFrames = frames;
+    pageTable = (page *)malloc(sizeof(page) * frames);
+    frameTable = (int *)malloc(sizeof(int) * frames);
 
+    if (pageTable == NULL || frameTable == NULL) {
+        printf("Failed to allocate memory for MMU\n");
+        return -1;
+    }
 
+    for (int i = 0; i < frames; i++) {
+        frameTable[i] = -1; // Initialize frame table to -1 indicating empty frames
+    }
 
-
-/* Creates the page table structure to record memory allocation */
-int createMMU (int frames)
-{
-
-    // to do   
-	return 0;
-}
-
-/* Checks for residency: returns frame no or -1 if not found */
-int checkInMemory( int page_number)
-{
-	int result = -1;
-
-
-    // to do
-    return result ;
-}
-
-/* allocate page to the next free frame and record where it put it */
-int allocateFrame( int page_number)
-{
-    // to do
     return 0;
 }
 
-/* Selects a victim for eviction/discard according to the replacement algorithm,  returns chosen frame_no  */
-page selectVictim(int page_number, enum repl mode)
-{
-	page victim;
+// Checks if a page is in memory and returns the frame number or -1 if not found.
+int checkInMemory(int page_number) {
+    for (int i = 0; i < numFrames; i++) {
+        if (frameTable[i] == page_number) {
+            pageTable[i].lastUsed = currentTime++; // Update the last used time for LRU
+            return i; // Frame number found
+        }
+    }
+    return -1; // Page not found in memory
+}
 
-	// to do 
-	victim.pageNo = 0;
-	victim.modified = 0;
-	return victim; // return evicted page 
+// Allocates a frame for a page if there's an empty frame available.
+int allocateFrame(int page_number) {
+    for (int i = 0; i < numFrames; i++) {
+        if (frameTable[i] == -1) { // Find an empty frame
+            frameTable[i] = page_number; // Allocate frame to page
+            pageTable[i].pageNo = page_number;
+            pageTable[i].modified = 0; // Initially not modified
+            pageTable[i].frameNo = i;
+            pageTable[i].lastUsed = currentTime++; // Update the last used time for LRU
+            return i; // Return allocated frame number
+        }
+    }
+    return -1; // No empty frame available
+}
+
+// Selects a victim for eviction/discard according to the replacement algorithm.
+page selectVictim(int page_number, enum repl mode) {
+    page victim;
+    victim.pageNo = -1;
+    victim.modified = 0;
+
+    // Implement replacement algorithm logic here based on `mode`.
+
+    return victim; // Return the selected victim page
 }
 
 		
@@ -148,15 +150,17 @@ int main(int argc, char *argv[])
 			 exit(-1);
     	}
 
-		no_events = 0 ;
-		disk_writes = 0 ;
-		disk_reads = 0 ;
+		// Number of pages referenced by the CPU.
+		no_events = 0;
+		disk_writes = 0;
+		disk_reads = 0;
+		// Read the address, followed by a space and then a character ('R' or 'W')
 		do_line = fscanf(trace,"%x %c",&address,&rw); // address and read/write 
 
 		// While the output has 2 lines, continue.
 		while (do_line == 2)
 		{
-			{page_number =  address >> pageoffset;
+			page_number =  address >> pageoffset;
 			frame_no = checkInMemory(page_number);    /* ask for physical address */
 
 			if (frame_no == -1){
@@ -181,7 +185,7 @@ int main(int argc, char *argv[])
 				}
 			}
 
-
+			// Checking the last character 
 			if (rw == 'R'){
 			    if (debugmode) printf( "reading    %8d \n", page_number) ;
 			}
@@ -193,12 +197,14 @@ int main(int argc, char *argv[])
 			    printf( "Badly formatted file. Error on line %d\n", no_events+1); 
 			    exit (-1);
 			}
-			}
+			
 
-			no_events++;
+			no_events++; // increment the number of events to mark the end of 
         	do_line = fscanf(trace,"%x %c",&address,&rw);
 		}
 
+
+		// At the end, we print a summary of the disk assesses and the page fault rate. 
 		printf( "total memory frames:  %d\n", numFrames);
 		printf( "events in trace:      %d\n", no_events);
 		printf( "total disk reads:     %d\n", disk_reads);
