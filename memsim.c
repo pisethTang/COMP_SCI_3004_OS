@@ -12,9 +12,45 @@ enum repl { Random, Fifo, Lru, Clock }; // Replacement algorithms
 const int pageoffset = 12;    
 int numFrames; // Number of frames, given by the user.
 
+
+/******************************************************** */
+// Global variables for the page and frame tables.
+page* pageTable; // Array of page tables
+int* frameTable; // Array of frame tables
+/******************************************************** */
+
+
 // Initializes the MMU and page table.
 int createMMU(int frames) {
-  
+	// Not sure why "frames" is an argument...
+	numFrames = frames;
+
+	// Allocate memory for the page table
+	pageTable = (page*) malloc(numFrames * sizeof(page));
+	if (pageTable == NULL){
+		// Failed to allocate memory for the page table.
+		return -1;
+	}
+
+	// Allocate memort for the frame table
+	frameTable = (int*) malloc(numFrames * sizeof(int));
+	if (frameTable == NULL){
+		// Failed to allocate memory for the frame table
+		return -1;
+	}
+
+	// Initialize the page table and frame table.
+	// Since the page size and the page frame size are 4KB = 2^12 Bytes
+	// We are justified in saying that the number of pages = number of frames.
+	// Note that the number of frames is given by the user in the cmd line argument.
+	for (int i = 0; i < numFrames; i++){
+		// This is something that is often glossed over (only pointed out by the tutor.)
+		// Whenever we start to implement something like this, we need some assumption, or context.
+		// That is, we assume that 
+		pageTable[i].pageNo = -1; // -1 indicates that the page is not in memory (they all are in disk)
+		pageTable[i].modified = 0; // 0 indicates that the page is not modified yet (clean, it's not been written to or modified)
+		frameTable[i] = -1; // -1 indicates that the frame is empty.
+	}
 
     return 0;
 }
@@ -23,7 +59,7 @@ int createMMU(int frames) {
 int checkInMemory(int page_number) {
     for (int i = 0; i < numFrames; i++) {
         if (frameTable[i] == page_number) {
-            pageTable[i].lastUsed = currentTime++; // Update the last used time for LRU
+            // pageTable[i].lastUsed = currentTime++; // Update the last used time for LRU
             return i; // Frame number found
         }
     }
@@ -39,20 +75,34 @@ int allocateFrame(int page_number) {
 // Selects a victim for eviction/discard according to the replacement algorithm.
 page selectVictim(int page_number, enum repl mode) {
     page victim;
-    victim.pageNo = -1;
-    victim.modified = 0;
+    victim.pageNo = 0; // 
+    victim.modified = 0; // 
 
     // Implement replacement algorithm logic here based on `mode`.
+	if (mode == Random){
 
+	}
+	else if (mode == Lru){
+
+	}
+	else if (mode == Fifo){
+
+	}
+	else{
+		// Clock Replacement algorithm
+
+	}
     return victim; // Return the selected victim page
 }
 
 int main(int argc, char *argv[]) 
     // Main function code remains the same...
 {
-	char *tracename;
-	int	page_number,frame_no, done ;
+	char *tracename; // name of the file 
+	int	page_number,frame_no, done;
 	int	do_line, i;
+
+	// disk_writes and reads are operations that do not convern with the physical memory, only with the disk.
 	int	no_events, disk_writes, disk_reads;
 	int debugmode;
  	enum repl replace;
@@ -124,36 +174,45 @@ int main(int argc, char *argv[])
 		no_events = 0;
 		disk_writes = 0;
 		disk_reads = 0;
+
 		// Read the address, followed by a space and then a character ('R' or 'W')
 		do_line = fscanf(trace,"%x %c",&address,&rw); // address and read/write 
 
 		// While the output has 2 lines, continue.
 		while (do_line == 2)
 		{
-			page_number =  address >> pageoffset;
+			page_number =  address >> pageoffset; // perform a right-bit shift pageoffset times to get the VPN.
 			frame_no = checkInMemory(page_number);    /* ask for physical address */
 
-			if (frame_no == -1){
-				disk_reads++ ;			/* Page fault, need to load it into memory */
+			if (frame_no == -1){ // page is not in the physical memory. It's a page fault.
+				disk_reads++ ;	/* Page fault, need to load it into memory */
 				if (debugmode) printf( "Page fault %8d \n", page_number) ;
+				
+				/**************************************** */
 				if (allocated < numFrames)  			/* allocate it to an empty frame */
 				{
             		frame_no = allocateFrame(page_number);
 		    		allocated++;
         		}
-        		else
+				/**************************************** */
+        		
+				
+				else // Implementing the page replacement algorithms.
 				{
-					Pvictim = selectVictim(page_number, replace) ;   /* returns page number of the victim  */
+					Pvictim = selectVictim(page_number, replace) ;   /* returns page number of the page to-be-evicted*/
 					frame_no = checkInMemory(page_number) ;    /* find out the frame the new page is in */
 		   			
-					if (Pvictim.modified) /* need to know victim page and modified  */
+					if (Pvictim.modified) /*Is the to-be-evicted page dirty/modified?*/
 					{
-            			disk_writes++;			    
+            			disk_writes++; // if so, write it to disk.
             			if (debugmode) printf( "Disk write %8d \n", Pvictim.pageNo) ;
 		    		}
+					// Pages that are not dirty/modified may simbly be discarded as their content is already on disk.
 		   			if (debugmode) printf( "Discard    %8d \n", Pvictim.pageNo) ;
 				}
 			}
+
+
 
 			// Checking the last character 
 			if (rw == 'R'){
@@ -169,7 +228,8 @@ int main(int argc, char *argv[])
 			}
 			
 
-			no_events++; // increment the number of events to mark the end of 
+			no_events++; // increment the number of events 
+
         	do_line = fscanf(trace,"%x %c",&address,&rw);
 		}
 
