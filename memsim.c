@@ -11,6 +11,8 @@ enum repl { Random, Fifo, Lru, Clock }; // Replacement algorithms
 
 const int pageoffset = 12;    
 int numFrames; // Number of frames, given by the user.
+int *frameTable;                 // Table to store page numbers in frames
+int *modifiedBits;               // Array to store modified bits for each page
 
 
 /******************************************************** */
@@ -20,40 +22,21 @@ int* frameTable; // Array of frame tables
 /******************************************************** */
 
 
-// Initializes the MMU and page table.
 int createMMU(int frames) {
-	// Not sure why "frames" is an argument...
-	numFrames = frames;
+    numFrames = frames;
+    frameTable = (int *)malloc(numFrames * sizeof(int));
+    modifiedBits = (int *)malloc(numFrames * sizeof(int));
 
-	// Allocate memory for the page table
-	pageTable = (page*) malloc(numFrames * sizeof(page));
-	if (pageTable == NULL){
-		// Failed to allocate memory for the page table.
-		return -1;
-	}
 
-	// Allocate memort for the frame table
-	frameTable = (int*) malloc(numFrames * sizeof(int));
-	if (frameTable == NULL){
-		// Failed to allocate memory for the frame table
-		return -1;
-	}
-
-	// Initialize the page table and frame table.
-	// Since the page size and the page frame size are 4KB = 2^12 Bytes
-	// We are justified in saying that the number of pages = number of frames.
-	// Note that the number of frames is given by the user in the cmd line argument.
-	for (int i = 0; i < numFrames; i++){
-		// This is something that is often glossed over (only pointed out by the tutor.)
-		// Whenever we start to implement something like this, we need some assumption, or context.
-		// That is, we assume that 
-		pageTable[i].pageNo = -1; // -1 indicates that the page is not in memory (they all are in disk)
-		pageTable[i].modified = 0; // 0 indicates that the page is not modified yet (clean, it's not been written to or modified)
-		frameTable[i] = -1; // -1 indicates that the frame is empty.
-	}
+    for (int i = 0; i < numFrames; i++) {
+        frameTable[i] = -1; // -1 indicates an empty frame
+        modifiedBits[i] = 0;
+    }
 
     return 0;
 }
+
+
 
 // Checks if a page is in memory and returns the frame number or -1 if not found.
 int checkInMemory(int page_number) {
@@ -72,6 +55,10 @@ int allocateFrame(int page_number) {
     return -1; // No empty frame available
 }
 
+
+
+
+
 // Selects a victim for eviction/discard according to the replacement algorithm.
 page selectVictim(int page_number, enum repl mode) {
     page victim;
@@ -80,18 +67,26 @@ page selectVictim(int page_number, enum repl mode) {
 
     // Implement replacement algorithm logic here based on `mode`.
 	if (mode == Random){
-
+		
 	}
 	else if (mode == Lru){
+		int oldestPageIndex = 0;
+		
 
+		return victim;
 	}
 	else if (mode == Fifo){
-
+		
 	}
 	else{
-		// Clock Replacement algorithm
+		// Clock Replacement algorithm (Cancelled - We don't need to implement this policy.)
 
 	}
+
+
+    // Default case (if mode is not Lru)
+    victim.pageNo = -1;
+    victim.modified = 0;
     return victim; // Return the selected victim page
 }
 
