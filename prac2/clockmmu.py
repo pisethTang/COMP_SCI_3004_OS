@@ -43,17 +43,18 @@ class ClockMMU(MMU):
             while True:
                 current_page, modified_bit, reference_bit = self.frame_list[self.clock_hand]
                 if reference_bit == 0:
+                    # Page fault: replace this page
+                    if modified_bit == 1:
+                        self.total_disk_writes += 1
+                    self.page_table.pop(current_page)
+                    self.page_table[page_number] = [self.clock_hand, int(is_write), 1]
+                    self.frame_list[self.clock_hand] = (page_number, int(is_write), 1)
+                    self.clock_hand = (self.clock_hand + 1) % self.frames
                     break
-                self.frame_list[self.clock_hand] = (current_page, modified_bit, 0)
-                self.clock_hand = (self.clock_hand + 1) % self.frames
-
-            if modified_bit == 1:
-                self.total_disk_writes += 1
-
-            self.page_table.pop(current_page)
-            self.page_table[page_number] = [self.clock_hand, int(is_write), 1]
-            self.frame_list[self.clock_hand] = (page_number, int(is_write), 1)
-            self.clock_hand = (self.clock_hand + 1) % self.frames
+                else:
+                    # Reset the reference bit and move the clock hand
+                    self.frame_list[self.clock_hand] = (current_page, modified_bit, 0)
+                    self.clock_hand = (self.clock_hand + 1) % self.frames
 
     def get_total_disk_reads(self):
         return self.total_disk_reads
