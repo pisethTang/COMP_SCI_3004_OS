@@ -75,7 +75,7 @@ page selectVictim(int page_number, enum repl mode)
 	return victim; // return evicted page 
 }
 
-		
+
 int main(int argc, char *argv[])
 {
 	char *tracename;
@@ -131,16 +131,13 @@ int main(int argc, char *argv[])
 		}
 
 		// Checks for which mode to take into account at the end. 
-    	if (strcmp(argv[4], "quiet\0") == 0){ 
-			debugmode = 0;}else if (strcmp(argv[4], "debug\0") == 0) 
-		{
-			debugmode = 1;
-		}else 
-		{
+    	if (strcmp(argv[4], "quiet\0") == 0) debugmode = 0;
+		else if (strcmp(argv[4], "debug\0") == 0) debugmode = 1;
+		else{
     		printf( "Replacement algorithm must be quiet/debug  \n");
     		exit ( -1);
-
 		}
+		
 		// Here, all of the input parameters have been validated.
 
 		// ========================================================
