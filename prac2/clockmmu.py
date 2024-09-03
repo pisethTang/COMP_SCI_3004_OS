@@ -21,6 +21,7 @@ class ClockMMU(MMU):
         if page_number not in self.page_table:
             self.handle_page_fault(page_number, False)
         else:
+            # Page is already in memory, just update the reference bit
             frame_index, modified_bit, reference_bit = self.page_table[page_number]
             self.page_table[page_number] = [frame_index, modified_bit, 1]  # Set reference bit
 
@@ -28,38 +29,39 @@ class ClockMMU(MMU):
         if page_number not in self.page_table:
             self.handle_page_fault(page_number, True)
         else:
+            # Page is already in memory, update both modified and reference bits
             frame_index, modified_bit, reference_bit = self.page_table[page_number]
             self.page_table[page_number] = [frame_index, 1, 1]  # Set modified and reference bits
 
     def handle_page_fault(self, page_number, is_write):
         self.total_page_faults += 1
-        self.total_disk_reads += 1
+        self.total_disk_reads += 1  # We read from disk only when there is a page fault
 
         if len(self.frame_list) < self.frames:
-            # There is still space in memory
+            # There is still space in the frame list, add new page directly
             frame_index = len(self.frame_list)
             self.page_table[page_number] = [frame_index, int(is_write), 1]
             self.frame_list.append((page_number, int(is_write), 1))
         else:
-            # Page replacement needed
+            # No space left, need to find a page to replace using the Clock algorithm
             while True:
                 current_page, modified_bit, reference_bit = self.frame_list[self.clock_hand]
-                
-                if reference_bit == 0:
-                    # Page needs to be replaced
-                    if modified_bit == 1:
-                        self.total_disk_writes += 1
 
-                    # Replace the page
+                if reference_bit == 0:
+                    # Found a page to replace
+                    if modified_bit == 1:
+                        self.total_disk_writes += 1  # Only increment disk writes if the page was modified
+                    
+                    # Replace the current page with the new page
                     self.page_table.pop(current_page)
                     self.page_table[page_number] = [self.clock_hand, int(is_write), 1]
                     self.frame_list[self.clock_hand] = (page_number, int(is_write), 1)
                     
-                    # Move clock hand to next page
+                    # Advance the clock hand
                     self.clock_hand = (self.clock_hand + 1) % self.frames
                     break
                 else:
-                    # Reset reference bit and move clock hand
+                    # Reference bit is 1, reset it to 0 and advance the clock hand
                     self.frame_list[self.clock_hand] = (current_page, modified_bit, 0)
                     self.clock_hand = (self.clock_hand + 1) % self.frames
 
