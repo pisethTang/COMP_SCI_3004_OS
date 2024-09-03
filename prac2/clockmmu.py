@@ -36,23 +36,30 @@ class ClockMMU(MMU):
         self.total_disk_reads += 1
 
         if len(self.frame_list) < self.frames:
+            # There is still space in memory
             frame_index = len(self.frame_list)
             self.page_table[page_number] = [frame_index, int(is_write), 1]
             self.frame_list.append((page_number, int(is_write), 1))
         else:
+            # Page replacement needed
             while True:
                 current_page, modified_bit, reference_bit = self.frame_list[self.clock_hand]
+                
                 if reference_bit == 0:
-                    # Page fault: replace this page
+                    # Page needs to be replaced
                     if modified_bit == 1:
                         self.total_disk_writes += 1
+
+                    # Replace the page
                     self.page_table.pop(current_page)
                     self.page_table[page_number] = [self.clock_hand, int(is_write), 1]
                     self.frame_list[self.clock_hand] = (page_number, int(is_write), 1)
+                    
+                    # Move clock hand to next page
                     self.clock_hand = (self.clock_hand + 1) % self.frames
                     break
                 else:
-                    # Reset the reference bit and move the clock hand
+                    # Reset reference bit and move clock hand
                     self.frame_list[self.clock_hand] = (current_page, modified_bit, 0)
                     self.clock_hand = (self.clock_hand + 1) % self.frames
 
