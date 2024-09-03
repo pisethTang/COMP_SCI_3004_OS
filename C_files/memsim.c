@@ -30,7 +30,7 @@ page selectVictim(int, enum repl);
 const int physicalMemorySize = 4096;
 /* Page size is fixed to 4 KB ==> offset = log_2(4096) = */
 const int pageoffset = 12;    
-int numFrames = physicalMemorySize / pageoffset;
+int numFrames;
 
 // The frame offset := number of bits required to represent a word in a frame.
 // Frame offset = Page offset 
@@ -131,9 +131,11 @@ int main(int argc, char *argv[])
 		}
 
 		// Checks for which mode to take into account at the end. 
-    	if (strcmp(argv[4], "quiet\0") == 0) debugmode = 0;
-		else if (strcmp(argv[4], "debug\0") == 0) debugmode = 1;
-    	else 
+    	if (strcmp(argv[4], "quiet\0") == 0){ 
+			debugmode = 0;}else if (strcmp(argv[4], "debug\0") == 0) 
+		{
+			debugmode = 1;
+		}else 
 		{
     		printf( "Replacement algorithm must be quiet/debug  \n");
     		exit ( -1);
@@ -167,7 +169,8 @@ int main(int argc, char *argv[])
             		frame_no = allocateFrame(page_number);
 		    		allocated++;
         		}
-        		else
+        		
+				else
 				{
 					Pvictim = selectVictim(page_number, replace) ;   /* returns page number of the victim  */
 					frame_no = checkInMemory(page_number) ;    /* find out the frame the new page is in */
