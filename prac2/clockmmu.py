@@ -36,24 +36,28 @@ class ClockMMU(MMU):
         self.total_disk_reads += 1
 
         if len(self.frame_list) < self.frames:
+            # Add the new page to a free frame
             frame_index = len(self.frame_list)
             self.page_table[page_number] = [frame_index, int(is_write), 1]
             self.frame_list.append((page_number, int(is_write), 1))
         else:
+            # Page replacement using the Clock algorithm
             while True:
                 current_page, modified_bit, reference_bit = self.frame_list[self.clock_hand]
+                
                 if reference_bit == 0:
+                    # Evict this page
+                    if modified_bit == 1:
+                        self.total_disk_writes += 1
+                    self.page_table.pop(current_page)
+                    self.page_table[page_number] = [self.clock_hand, int(is_write), 1]
+                    self.frame_list[self.clock_hand] = (page_number, int(is_write), 1)
+                    self.clock_hand = (self.clock_hand + 1) % self.frames
                     break
-                self.frame_list[self.clock_hand] = (current_page, modified_bit, 0)
-                self.clock_hand = (self.clock_hand + 1) % self.frames
-
-            if modified_bit == 1:
-                self.total_disk_writes += 1
-
-            self.page_table.pop(current_page)
-            self.page_table[page_number] = [self.clock_hand, int(is_write), 1]
-            self.frame_list[self.clock_hand] = (page_number, int(is_write), 1)
-            self.clock_hand = (self.clock_hand + 1) % self.frames
+                else:
+                    # Reset the reference bit
+                    self.frame_list[self.clock_hand] = (current_page, modified_bit, 0)
+                    self.clock_hand = (self.clock_hand + 1) % self.frames
 
     def get_total_disk_reads(self):
         return self.total_disk_reads
