@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 typedef struct {
     int pageNo;   // page number
     int modified; // dirty bit 
@@ -13,7 +14,7 @@ const int pageoffset = 12;
 int numFrames; // Number of frames, given by the user.
 int *frameTable;                 // Table to store page numbers in frames
 int *modifiedBits;               // Array to store modified bits for each page
-
+int* referencedBit; 
 
 /******************************************************** */
 // Global variables for the page and frame tables.
@@ -22,11 +23,16 @@ int* frameTable; // Array of frame tables
 /******************************************************** */
 
 
+/************************************************************************************* */
 int createMMU(int frames) {
+	// MMU uses the Page Map to translate VPN to PPN.
+	// Therefore, we'll have t somehow create a hash table. 
     numFrames = frames;
     frameTable = (int *)malloc(numFrames * sizeof(int));
-    modifiedBits = (int *)malloc(numFrames * sizeof(int));
-
+    // modifiedBits = (int *)malloc(numFrames * sizeof(int));
+	
+	// Creating an array of page tables
+	
 
     for (int i = 0; i < numFrames; i++) {
         frameTable[i] = -1; // -1 indicates an empty frame
@@ -36,8 +42,10 @@ int createMMU(int frames) {
     return 0;
 }
 
+/************************************************************************************* */
 
 
+/************************************************************************************* */
 // Checks if a page is in memory and returns the frame number or -1 if not found.
 int checkInMemory(int page_number) {
     for (int i = 0; i < numFrames; i++) {
@@ -48,12 +56,20 @@ int checkInMemory(int page_number) {
     }
     return -1; // Page not found in memory
 }
+/************************************************************************************* */
 
+
+
+/************************************************************************************* */
 // Allocates a frame for a page if there's an empty frame available.
 int allocateFrame(int page_number) {
+	// Checks if there is an empty frame available
+
 	
+
     return -1; // No empty frame available
 }
+/************************************************************************************* */
 
 
 
@@ -163,7 +179,7 @@ int main(int argc, char *argv[])
 		// ========================================================
 		done = createMMU (numFrames);
 		if (done == -1) {
-			 printf( "Cannot create MMU" ) ;
+			 printf( "Cannot create MMU");
 			 exit(-1);
     	}
 
@@ -182,7 +198,7 @@ int main(int argc, char *argv[])
 			frame_no = checkInMemory(page_number);    /* ask for physical address */
 
 			if (frame_no == -1){ // page is not in the physical memory. It's a page fault.
-				disk_reads++ ;	/* Page fault, need to load it into memory */
+				disk_reads++;	/* Page fault, need to load it into memory */
 				if (debugmode) printf( "Page fault %8d \n", page_number) ;
 				
 				/**************************************** */

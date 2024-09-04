@@ -17,9 +17,9 @@ class LruMMU(MMU):
         self.debug = False
 
     def read_memory(self, page_number):
-        if page_number not in self.page_table:
-            self.handle_page_fault(page_number, False)
-        else:
+        if page_number not in self.page_table: # A page fault!
+            self.handle_page_fault(page_number, False) # Apply one of the replacement policies. 
+        else: # Not a page fault
             frame_index, modified_bit = self.page_table.pop(page_number)
             self.page_table[page_number] = (frame_index, modified_bit)  # Re-insert as most recently used
 
