@@ -24,9 +24,9 @@ class LruMMU(MMU):
             self.page_table[page_number] = (frame_index, modified_bit)  # Re-insert as most recently used
 
     def write_memory(self, page_number):
-        if page_number not in self.page_table: # Page fault 
-            self.handle_page_fault(page_number, True) # Apply one of the replacement policies
-        else: # Page hit 
+        if page_number not in self.page_table:
+            self.handle_page_fault(page_number, True)
+        else:
             frame_index, _ = self.page_table.pop(page_number)
             self.page_table[page_number] = (frame_index, 1)  # Set modified bit and re-insert
 

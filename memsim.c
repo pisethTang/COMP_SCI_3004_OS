@@ -115,8 +115,10 @@ int main(int argc, char *argv[])
 	arg[2]: The number of page frames in the simulated memory.
 	arg[3]: The page replacement algorithm to use: rand/lru/rand
 	arg[4]: the mode to run: quiet/debug.
-	
 	*/
+
+
+	
     if (argc < 5) {
     	printf( "Usage: ./memsim inputfile numberframes replacementmode debugmode \n");
     	exit ( -1);
