@@ -81,21 +81,30 @@ page selectVictim(int page_number, enum repl mode) {
     victim.pageNo = 0; // 
     victim.modified = 0; // 
 
+	if (numFrames == 0){
+		frameTable[0] = page_number;
+
+		
+	}
+
     // Implement replacement algorithm logic here based on `mode`.
 	if (mode == Random){
 		
 	}
 	else if (mode == Lru){
-		int oldestPageIndex = 0;
+		for (int i=0; i<numFrames; i++){
+
+		}
 		
 
 		return victim;
 	}
-	else if (mode == Fifo){
-		
-	}
+	// else if (mode == Fifo){
+	// 	// (Cancelled - We don't need to implement this policy.)
+	// }
 	else{
-		// Clock Replacement algorithm (Cancelled - We don't need to implement this policy.)
+		// Clock Replacement algorithm 
+
 
 	}
 
@@ -105,6 +114,12 @@ page selectVictim(int page_number, enum repl mode) {
     victim.modified = 0;
     return victim; // Return the selected victim page
 }
+
+
+
+
+
+
 
 int main(int argc, char *argv[]) 
     // Main function code remains the same...
