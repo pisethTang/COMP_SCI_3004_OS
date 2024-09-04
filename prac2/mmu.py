@@ -8,6 +8,10 @@
 *
 '''
 class MMU:
+    def __init__(self):
+        pass 
+    
+    
     def read_memory(self, page_number):
         pass
 

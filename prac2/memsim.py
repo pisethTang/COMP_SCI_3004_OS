@@ -42,7 +42,7 @@ def main():
     elif replacement_mode == "clock":
         mmu = ClockMMU(frames)
     else:
-        print("Invalid replacement mode. Valid options are [rand, lru, esc]")
+        print("Invalid replacement mode. Valid options are [rand, lru, clock]")
         return
 
     debug_mode  = sys.argv[4]
