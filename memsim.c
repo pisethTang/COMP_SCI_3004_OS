@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+// #include <>
 
 typedef struct {
     int pageNo;   // page number
@@ -12,14 +12,14 @@ enum repl { Random, Fifo, Lru, Clock }; // Replacement algorithms
 
 const int pageoffset = 12;    
 int numFrames; // Number of frames, given by the user.
-int *frameTable;                 // Table to store page numbers in frames
+// int *frameTable;                 // Table to store page numbers in frames
 int *modifiedBits;               // Array to store modified bits for each page
 int* referencedBit; 
 
 /******************************************************** */
 // Global variables for the page and frame tables.
-page* pageTable; // Array of page tables
-int* frameTable; // Array of frame tables
+// page* pageTable; // Array of page tables
+page* frameTable; // Array of frame tables
 /******************************************************** */
 
 
@@ -28,15 +28,17 @@ int createMMU(int frames) {
 	// MMU uses the Page Map to translate VPN to PPN.
 	// Therefore, we'll have t somehow create a hash table. 
     numFrames = frames;
-    frameTable = (int *)malloc(numFrames * sizeof(int));
-    // modifiedBits = (int *)malloc(numFrames * sizeof(int));
+    frameTable = (page *)malloc(numFrames * sizeof(page));
+    referencedBit = (int *)malloc(numFrames * sizeof(int));
 	
 	// Creating an array of page tables
 	
 
     for (int i = 0; i < numFrames; i++) {
-        frameTable[i] = -1; // -1 indicates an empty frame
-        modifiedBits[i] = 0;
+        frameTable[i].pageNo = -1; // 0 indicates an empty frame
+		frameTable[i].modified = 0;
+		// modifiedBits[i] = 0; // 
+		referencedBit[i] = 0; ///
     }
 
     return 0;
@@ -49,14 +51,16 @@ int createMMU(int frames) {
 // Checks if a page is in memory and returns the frame number or -1 if not found.
 int checkInMemory(int page_number) {
     for (int i = 0; i < numFrames; i++) {
-        if (frameTable[i] == page_number) {
+        if (frameTable[i].pageNo == page_number) {
             // pageTable[i].lastUsed = currentTime++; // Update the last used time for LRU
+			
             return i; // Frame number found
         }
     }
-    return -1; // Page not found in memory
+    return -1; // Page not found in memory (will trigger a page fault)
 }
 /************************************************************************************* */
+
 
 
 
@@ -64,9 +68,14 @@ int checkInMemory(int page_number) {
 // Allocates a frame for a page if there's an empty frame available.
 int allocateFrame(int page_number) {
 	// Checks if there is an empty frame available
-
-	
-
+	for (int i=0; i<numFrames; i++){
+		if (frameTable[i].pageNo == -1) 
+		{	// Found an empty frame.
+			frameTable[i].pageNo = page_number;
+			frameTable[i].modified = 0;
+			return i;
+		}	
+	}
     return -1; // No empty frame available
 }
 /************************************************************************************* */
@@ -78,40 +87,50 @@ int allocateFrame(int page_number) {
 // Selects a victim for eviction/discard according to the replacement algorithm.
 page selectVictim(int page_number, enum repl mode) {
     page victim;
-    victim.pageNo = 0; // 
-    victim.modified = 0; // 
-
-	if (numFrames == 0){
-		frameTable[0] = page_number;
-
-		
-	}
+    victim.pageNo = 0; 	 // 
+    victim.modified = 0; // 0:= not modified.
+	int victimIndex = 0;
 
     // Implement replacement algorithm logic here based on `mode`.
 	if (mode == Random){
+		// Just pick a random page in the PM to evict
+		victimIndex = rand() % numFrames; // Pick a random number from 0 to numFrames-1
+		victim = frameTable[victimIndex];
 		
+		// victim.pageNo = frameTable[randomIndex];
+		frameTable[victimIndex].pageNo = page_number;
 	}
 	else if (mode == Lru){
-		for (int i=0; i<numFrames; i++){
+		// Assumes that the least recently used page is the one with the lowest index.
+		victimIndex = 0; // Starting with the first page as the LRU and then progress.
+		victim = frameTable[victimIndex];
 
+		for (int i=1; i<numFrames; i++){
+			frameTable[i-1] = frameTable[i]; // Shift pages to the left 
 		}
-		
-
-		return victim;
+		frameTable[numFrames-1].pageNo = page_number;
+		// return victim;
 	}
 	// else if (mode == Fifo){
 	// 	// (Cancelled - We don't need to implement this policy.)
 	// }
 	else{
 		// Clock Replacement algorithm 
-
+        static int hand = 0; // Clock hand pointing to the next frame to check
+        while (referencedBit[hand] != 0) {
+            referencedBit[hand] = 0; // Give second chance, set reference bit to 0
+            hand = (hand + 1) % numFrames; // Move the clock hand
+        }
+        victim = frameTable[hand];
+        frameTable[hand].pageNo = page_number;
+        referencedBit[hand] = 1; // Set reference bit for the new page
+        hand = (hand + 1) % numFrames; // Move the clock hand
 
 	}
 
-
     // Default case (if mode is not Lru)
-    victim.pageNo = -1;
-    victim.modified = 0;
+    // victim.pageNo = 0;
+    // victim.modified = 0;
     return victim; // Return the selected victim page
 }
 
@@ -213,7 +232,7 @@ int main(int argc, char *argv[])
 			frame_no = checkInMemory(page_number);    /* ask for physical address */
 
 			if (frame_no == -1){ // page is not in the physical memory. It's a page fault.
-				disk_reads++;	/* Page fault, need to load it into memory */
+				disk_reads++;	/* Page fault, need to read from HD and load it into memory  */
 				if (debugmode) printf( "Page fault %8d \n", page_number) ;
 				
 				/**************************************** */
@@ -269,4 +288,6 @@ int main(int argc, char *argv[])
 		printf( "total disk writes:    %d\n", disk_writes);
 		printf( "page fault rate:      %.4f\n", (float) disk_reads/no_events);
 	}
+
+	fclose(trace);
 }		
