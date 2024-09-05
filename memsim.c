@@ -55,7 +55,7 @@ int checkInMemory(int page_number) {
             // Update for LRU: Mark as most recently used
             frameTable[i].lastAccessTime = currentTime++;
             // For Clock: Mark as referenced
-            frameTable[i].referenceBit = 0;
+            frameTable[i].referenceBit = 1;
             return i; // Page is in memory
         }
     }
@@ -92,7 +92,7 @@ page selectVictim(int page_number, enum repl mode) {
     else if (mode == Lru) {
         // LRU replacement algorithm: Evict the least recently used page
         victimIndex = 0;
-        for (int i = 0; i < numFrames; i++) {
+        for (int i = 1; i < numFrames; i++) {
             if (frameTable[i].lastAccessTime < frameTable[victimIndex].lastAccessTime) {
                 victimIndex = i;
             }
