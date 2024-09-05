@@ -289,5 +289,5 @@ int main(int argc, char *argv[])
 		printf( "page fault rate:      %.4f\n", (float) disk_reads/no_events);
 	}
 
-	fclose(trace);
+	// fclose(trace);
 }		
