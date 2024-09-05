@@ -3,37 +3,31 @@
 #include <string.h>
 #include <time.h>
 
-
-/***********************Page table construction*********************************** */
+/*********************** Page Table Construction *********************************** */
 typedef struct {
     int pageNo;   // Page number
     int modified; // Dirty bit
     int lastAccessTime; // LRU: Timestamp for least recently used tracking
-    int referenceBit; // Clock: Reference bit for second chance algorithm
+    int referenceBit;   // Clock: Reference bit for second chance algorithm
 } page;
 
 enum repl { Random, Lru, Clock }; // Page replacement algorithms
 /************************************************************** */
 
-
-
-/************************TO-DO*********************************** */
+/************************ TO-DO *********************************** */
 int createMMU(int frames);
 int checkInMemory(int page_number);
 int allocateFrame(int page_number);
 page selectVictim(int page_number, enum repl mode);
 /*********************************************************** */
 
-
-/********************** Satellite Data************************************* */
+/********************** Satellite Data ************************************* */
 const int pageoffset = 12; // Page size fixed at 4 KB
 int numFrames;
 page *frameTable;
 int currentTime = 0; // Global time for LRU
 int clockHand = 0;   // Clock hand for the Clock algorithm
-
 /********************************************************** */
-
 
 /******************************************************** */
 // Creates the page table structure to record memory allocation
@@ -46,14 +40,11 @@ int createMMU(int frames) {
         frameTable[i].pageNo = -1; // Indicates an empty frame
         frameTable[i].modified = 0;
         frameTable[i].lastAccessTime = 0; // Initialize for LRU
-        frameTable[i].referenceBit = 0; // Initialize for Clock
+        frameTable[i].referenceBit = 0;   // Initialize for Clock
     }
 
     return 0;
 }
-
-
-
 
 /******************************************************** */
 // Checks for residency: returns frame number or -1 if not found
@@ -61,16 +52,15 @@ int createMMU(int frames) {
 int checkInMemory(int page_number) {
     for (int i = 0; i < numFrames; i++) {
         if (frameTable[i].pageNo == page_number) {
-            frameTable[i].lastAccessTime = currentTime++; // Update for LRU
-            frameTable[i].referenceBit = 1; // Mark referenced for Clock
+            // Update for LRU: Mark as most recently used
+            frameTable[i].lastAccessTime = currentTime++;
+            // For Clock: Mark as referenced
+            frameTable[i].referenceBit = 1;
             return i; // Page is in memory
         }
     }
     return -1; // Page not found
 }
-
-
-
 
 /******************************************************** */
 // Allocates a page to the next free frame and records where it was placed
@@ -79,9 +69,9 @@ int allocateFrame(int page_number) {
     for (int i = 0; i < numFrames; i++) {
         if (frameTable[i].pageNo == -1) { // Find an empty frame
             frameTable[i].pageNo = page_number;
-            frameTable[i].modified = 0; // Initially not modified
+            frameTable[i].modified = 0;   // Initially not modified
             frameTable[i].lastAccessTime = currentTime++; // For LRU
-            frameTable[i].referenceBit = 1; // For Clock
+            frameTable[i].referenceBit = 1; // For Clock: Set reference bit
             return i;
         }
     }
@@ -91,47 +81,6 @@ int allocateFrame(int page_number) {
 /******************************************************** */
 // Selects a victim for eviction/discard based on the replacement algorithm
 /******************************************************** */
-// page selectVictim(int page_number, enum repl mode) {
-//     page victim;
-//     int victimIndex = -1;
-
-//     if (mode == Random) {
-//         // Random replacement algorithm: Select a random frame
-//         victimIndex = rand() % numFrames;
-//     } 
-//     else if (mode == Lru) {
-//         // LRU replacement algorithm: Evict the least recently used page
-//         victimIndex = 0;
-//         for (int i = 1; i < numFrames; i++) {
-//             if (frameTable[i].lastAccessTime < frameTable[victimIndex].lastAccessTime) {
-//                 victimIndex = i;
-//             }
-//         }
-//     } 
-//     else if (mode == Clock) {
-//         // Clock replacement algorithm
-//         while (1) {
-//             if (frameTable[clockHand].referenceBit == 0) {
-//                 victimIndex = clockHand;
-//                 clockHand = (clockHand + 1) % numFrames; // Move clock hand
-//                 break;
-//             } else {
-//                 frameTable[clockHand].referenceBit = 0; // Give second chance
-//                 clockHand = (clockHand + 1) % numFrames; // Move clock hand
-//             }
-//         }
-//     }
-
-//     // Store the victim page
-//     victim = frameTable[victimIndex];
-//     frameTable[victimIndex].pageNo = page_number; // Replace with the new page
-//     frameTable[victimIndex].modified = 0; // Reset modified bit
-//     frameTable[victimIndex].lastAccessTime = currentTime++; // Update for LRU
-//     frameTable[victimIndex].referenceBit = 1; // Set reference bit for Clock
-
-//     return victim;
-// }
-
 page selectVictim(int page_number, enum repl mode) {
     page victim;
     int victimIndex = -1;
@@ -176,7 +125,6 @@ page selectVictim(int page_number, enum repl mode) {
 
     return victim;
 }
-
 
 /******************************************************** */
 // Main function remains unchanged from the skeleton
