@@ -55,7 +55,7 @@ int checkInMemory(int page_number) {
             // Update for LRU: Mark as most recently used
             frameTable[i].lastAccessTime = currentTime++;
             // For Clock: Mark as referenced
-            frameTable[i].referenceBit = 1;
+            frameTable[i].referenceBit = 0;
             return i; // Page is in memory
         }
     }
@@ -92,7 +92,7 @@ page selectVictim(int page_number, enum repl mode) {
     else if (mode == Lru) {
         // LRU replacement algorithm: Evict the least recently used page
         victimIndex = 0;
-        for (int i = 1; i < numFrames; i++) {
+        for (int i = 0; i < numFrames; i++) {
             if (frameTable[i].lastAccessTime < frameTable[victimIndex].lastAccessTime) {
                 victimIndex = i;
             }
@@ -102,15 +102,15 @@ page selectVictim(int page_number, enum repl mode) {
         // Clock replacement algorithm
         while (1) {
             // Find a page with a cleared reference bit
-            if (frameTable[clockHand].referenceBit == 0) {
+            if (frameTable[clockHand].referenceBit == 0) { // once we've found a a bit that it not set to 1, that means it hasn't been used for some times and will be evicted.
                 victimIndex = clockHand;
                 clockHand = (clockHand + 1) % numFrames; // Move the clock hand
                 break;
             } else {
-                // Give the page a second chance: clear its reference bit
+                // Give the page a second chance: clear its reference bit and continue searching.
                 frameTable[clockHand].referenceBit = 0;
-                clockHand = (clockHand + 1) % numFrames; // Move the clock hand
-            }
+                clockHand = (clockHand+ 1) % numFrames; // Move the clock hand
+			}
         }
     }
 
