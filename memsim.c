@@ -91,6 +91,47 @@ int allocateFrame(int page_number) {
 /******************************************************** */
 // Selects a victim for eviction/discard based on the replacement algorithm
 /******************************************************** */
+// page selectVictim(int page_number, enum repl mode) {
+//     page victim;
+//     int victimIndex = -1;
+
+//     if (mode == Random) {
+//         // Random replacement algorithm: Select a random frame
+//         victimIndex = rand() % numFrames;
+//     } 
+//     else if (mode == Lru) {
+//         // LRU replacement algorithm: Evict the least recently used page
+//         victimIndex = 0;
+//         for (int i = 1; i < numFrames; i++) {
+//             if (frameTable[i].lastAccessTime < frameTable[victimIndex].lastAccessTime) {
+//                 victimIndex = i;
+//             }
+//         }
+//     } 
+//     else if (mode == Clock) {
+//         // Clock replacement algorithm
+//         while (1) {
+//             if (frameTable[clockHand].referenceBit == 0) {
+//                 victimIndex = clockHand;
+//                 clockHand = (clockHand + 1) % numFrames; // Move clock hand
+//                 break;
+//             } else {
+//                 frameTable[clockHand].referenceBit = 0; // Give second chance
+//                 clockHand = (clockHand + 1) % numFrames; // Move clock hand
+//             }
+//         }
+//     }
+
+//     // Store the victim page
+//     victim = frameTable[victimIndex];
+//     frameTable[victimIndex].pageNo = page_number; // Replace with the new page
+//     frameTable[victimIndex].modified = 0; // Reset modified bit
+//     frameTable[victimIndex].lastAccessTime = currentTime++; // Update for LRU
+//     frameTable[victimIndex].referenceBit = 1; // Set reference bit for Clock
+
+//     return victim;
+// }
+
 page selectVictim(int page_number, enum repl mode) {
     page victim;
     int victimIndex = -1;
@@ -111,28 +152,30 @@ page selectVictim(int page_number, enum repl mode) {
     else if (mode == Clock) {
         // Clock replacement algorithm
         while (1) {
+            // Find a page with a cleared reference bit
             if (frameTable[clockHand].referenceBit == 0) {
                 victimIndex = clockHand;
-                clockHand = (clockHand + 1) % numFrames; // Move clock hand
+                clockHand = (clockHand + 1) % numFrames; // Move the clock hand
                 break;
             } else {
-                frameTable[clockHand].referenceBit = 0; // Give second chance
-                clockHand = (clockHand + 1) % numFrames; // Move clock hand
+                // Give the page a second chance: clear its reference bit
+                frameTable[clockHand].referenceBit = 0;
+                clockHand = (clockHand + 1) % numFrames; // Move the clock hand
             }
         }
     }
 
-    // Store the victim page
+    // Get the victim page
     victim = frameTable[victimIndex];
-    frameTable[victimIndex].pageNo = page_number; // Replace with the new page
+    
+    // Replace with the new page
+    frameTable[victimIndex].pageNo = page_number;
     frameTable[victimIndex].modified = 0; // Reset modified bit
     frameTable[victimIndex].lastAccessTime = currentTime++; // Update for LRU
     frameTable[victimIndex].referenceBit = 1; // Set reference bit for Clock
 
     return victim;
 }
-
-
 
 
 /******************************************************** */
