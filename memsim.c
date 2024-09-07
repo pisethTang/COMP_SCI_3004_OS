@@ -231,12 +231,29 @@ int main(int argc, char *argv[]) {
         do_line = fscanf(trace, "%x %c", &address, &rw);
     }
 
+
+    /********************************************************************************************** */
+    FILE* output; // write to a file called output.txt
+    output = fopen("output.txt", "w");
+    if (output == NULL) {
+        printf("Error opening output file\n");
+        exit(-1);
+    }
+    fprintf(output, "total memory frames:  %d\n", numFrames);
+    fprintf(output, "events in trace:      %d\n", no_events);
+    fprintf(output, "total disk reads:     %d\n", disk_reads);
+    fprintf(output, "total disk writes:    %d\n", disk_writes);
+    fprintf(output, "page fault rate:      %.4f\n", (float)disk_reads / no_events);
+
+    fclose(output); // Close the output file
+
+/*************************************************************************************** */
     printf("total memory frames:  %d\n", numFrames);
     printf("events in trace:      %d\n", no_events);
     printf("total disk reads:     %d\n", disk_reads);
     printf("total disk writes:    %d\n", disk_writes);
     printf("page fault rate:      %.4f\n", (float)disk_reads / no_events);
-
+/*************************************************************************** */
     fclose(trace);
     free(frameTable);
 
