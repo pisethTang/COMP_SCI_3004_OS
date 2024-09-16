@@ -11,7 +11,7 @@ typedef struct {
     int referenceBit;   // Clock: Reference bit for second chance algorithm
 } page;
 
-enum repl { Random, Lru, Clock }; // Page replacement algorithms
+enum repl {Random, Lru, Clock}; // Page replacement algorithms
 /************************************************************** */
 
 /************************ TO-DO *********************************** */
@@ -24,7 +24,7 @@ page selectVictim(enum repl mode);
 /********************** Satellite Data ************************************* */
 const int pageoffset = 12; // Page size fixed at 4 KB
 int numFrames;
-page *frameTable;
+page *pageTable;
 int currentTime = 0; // Global time for LRU
 int clockHand = 0;   // Clock hand for the Clock algorithm
 /********************************************************** */
@@ -34,13 +34,13 @@ int clockHand = 0;   // Clock hand for the Clock algorithm
 /******************************************************** */
 int createMMU(int frames) {
     numFrames = frames;
-    frameTable = (page *)malloc(numFrames * sizeof(page));
+    pageTable = (page *)malloc(numFrames * sizeof(page));
 
     for (int i = 0; i < numFrames; i++) {
-        frameTable[i].pageNo = -1; // Indicates an empty frame
-        frameTable[i].modified = 0;
-        frameTable[i].lastAccessTime = 0; // Initialize for LRU
-        frameTable[i].referenceBit = 0;   // Initialize for Clock
+        pageTable[i].pageNo = -1; // Indicates an empty frame
+        pageTable[i].modified = 0;
+        pageTable[i].lastAccessTime = 0; // Initialize for LRU
+        pageTable[i].referenceBit = 0;   // Initialize for Clock
     }
 
     return 0;
@@ -51,11 +51,11 @@ int createMMU(int frames) {
 /******************************************************** */
 int checkInMemory(int page_number) {
     for (int i = 0; i < numFrames; i++) {
-        if (frameTable[i].pageNo == page_number) {
+        if (pageTable[i].pageNo == page_number) {
             // Update for LRU: Mark as most recently used
-            frameTable[i].lastAccessTime = currentTime++;
+            pageTable[i].lastAccessTime = currentTime++;
             // For Clock: Mark as referenced
-            frameTable[i].referenceBit = 1;
+            pageTable[i].referenceBit = 1;
             return i; // Page is in memory
         }
     }
@@ -67,11 +67,11 @@ int checkInMemory(int page_number) {
 /******************************************************** */
 int allocateFrame(int page_number) {
     for (int i = 0; i < numFrames; i++) {
-        if (frameTable[i].pageNo == -1) { // Find an empty frame
-            frameTable[i].pageNo = page_number;
-            frameTable[i].modified = 0;   // Initially not modified
-            frameTable[i].lastAccessTime = currentTime++; // For LRU
-            frameTable[i].referenceBit = 1; // For Clock: Set reference bit
+        if (pageTable[i].pageNo == -1) { // Find an empty frame
+            pageTable[i].pageNo = page_number;
+            pageTable[i].modified = 0;   // Initially not modified
+            pageTable[i].lastAccessTime = currentTime++; // For LRU
+            pageTable[i].referenceBit = 1; // For Clock: Set reference bit
             return i;
         }
     }
@@ -93,7 +93,7 @@ page selectVictim(enum repl mode) {
         // LRU replacement algorithm: Evict the least recently used page
         victimIndex = 0;
         for (int i = 0; i < numFrames; i++) {
-            if (frameTable[i].lastAccessTime < frameTable[victimIndex].lastAccessTime) {
+            if (pageTable[i].lastAccessTime < pageTable[victimIndex].lastAccessTime) {
                 victimIndex = i;
             }
         }
@@ -102,32 +102,67 @@ page selectVictim(enum repl mode) {
         // Clock replacement algorithm
         while (1) {
             // Find a page with a cleared reference bit
-            if (frameTable[clockHand].referenceBit == 0) { // once we've found a bit that is not set to 1, that means it hasn't been used for some time and will be evicted.
+            if (pageTable[clockHand].referenceBit == 0) { // once we've found a bit that is not set to 1, that means it hasn't been used for some time and will be evicted.
                 victimIndex = clockHand;
                 clockHand = (clockHand + 1) % numFrames; // Move the clock hand
                 break;
             } else {
                 // Give the page a second chance: clear its reference bit and continue searching.
-                frameTable[clockHand].referenceBit = 0;
+                pageTable[clockHand].referenceBit = 0;
                 clockHand = (clockHand + 1) % numFrames; // Move the clock hand
             }
         }
     }
 
     // Get the victim page
-    victim = frameTable[victimIndex];
+    victim = pageTable[victimIndex];
     
     // Replace with the new page
-    frameTable[victimIndex].pageNo = -1; // Clear out the victim's page number
-    frameTable[victimIndex].modified = 0; // Reset modified bit
-    frameTable[victimIndex].lastAccessTime = currentTime++; // Update for LRU
-    frameTable[victimIndex].referenceBit = 1; // Set reference bit for Clock (we just loaded it)
+    pageTable[victimIndex].pageNo = -1; // Clear out the victim's page number
+    pageTable[victimIndex].modified = 0; // Reset modified bit
+    pageTable[victimIndex].lastAccessTime = currentTime++; // Update for LRU
+    pageTable[victimIndex].referenceBit = 1; // Set reference bit for Clock (we just loaded it)
 
     return victim;
 }
 
 
-int main(int argc, char *argv[]) {
+struct result{
+    int numberAccesses;
+    int numFrames_;
+    float pageFaultRate;
+};
+
+void printResult(struct result* Result){
+    printf("numberAccesses: %d\n", Result->numberAccesses);
+    printf("Number of frames: %d\n", Result->numFrames_);
+    printf("Page fault rate: %f\n", Result->pageFaultRate);
+}
+
+void writeToFile(struct result* Result){
+    /********************************************************************************************** */
+    int no_events = Result -> numberAccesses;
+    int numFrames = Result -> numFrames_;
+    float pageFaultRate = Result -> pageFaultRate;
+    
+    
+    FILE* output; // write to a file called output.txt
+    output = fopen("output.txt", "w");
+    if (output == NULL) {
+        printf("Error opening output file\n");
+        exit(-1);
+    }
+    // float pageFaultRate = (float)disk_reads / no_events;
+    fprintf(output, "total memory frames:  %d\n", numFrames);
+    fprintf(output, "events in trace:      %d\n", no_events);
+    // fprintf(output, "total disk reads:     %d\n", disk_reads);
+    // fprintf(output, "total disk writes:    %d\n", disk_writes);
+    fprintf(output, "page fault rate:      %.4f\n", pageFaultRate);
+
+    fclose(output); // Close the output file
+}
+
+void Simulation(int argc, char *argv[]){
     char *tracename;
     int page_number, frame_no, done;
     int do_line;
@@ -195,12 +230,13 @@ int main(int argc, char *argv[]) {
 
         if (frame_no == -1) {
             disk_reads++; // Page fault, need to load into memory
-            if (debugmode)
-                printf("Page fault    %8d\n", page_number);
+            if (debugmode) printf("Page fault    %8d\n", page_number);
+            // if the memory is full, allocate a new page in th ephysical memory
             if (allocated < numFrames) {
                 frame_no = allocateFrame(page_number);
                 allocated++;
-            } else {
+            } 
+            else {
                 Pvictim = selectVictim(replace); // Select a victim
                 if (Pvictim.modified) {
                     disk_writes++;
@@ -219,7 +255,7 @@ int main(int argc, char *argv[]) {
             if (debugmode)
                 printf("Reading       %8d\n", page_number);
         } else if (rw == 'W') {
-            frameTable[frame_no].modified = 1; // Mark the page as modified
+            pageTable[frame_no].modified = 1; // Mark the page as modified
             if (debugmode)
                 printf("Writing       %8d\n", page_number);
         } else {
@@ -231,31 +267,84 @@ int main(int argc, char *argv[]) {
         do_line = fscanf(trace, "%x %c", &address, &rw);
     }
 
+    struct result* R;
+    
+    R -> numberAccesses = no_events;
+    R -> numFrames_ = numFrames;
+    R -> pageFaultRate = (float) disk_reads/disk_writes;
 
-    /********************************************************************************************** */
-    FILE* output; // write to a file called output.txt
-    output = fopen("output.txt", "w");
-    if (output == NULL) {
-        printf("Error opening output file\n");
-        exit(-1);
-    }
-    fprintf(output, "total memory frames:  %d\n", numFrames);
-    fprintf(output, "events in trace:      %d\n", no_events);
-    fprintf(output, "total disk reads:     %d\n", disk_reads);
-    fprintf(output, "total disk writes:    %d\n", disk_writes);
-    fprintf(output, "page fault rate:      %.4f\n", (float)disk_reads / no_events);
-
-    fclose(output); // Close the output file
 
 /*************************************************************************************** */
     printf("total memory frames:  %d\n", numFrames);
     printf("events in trace:      %d\n", no_events);
     printf("total disk reads:     %d\n", disk_reads);
-    printf("total disk writes:    %d\n", disk_writes);
-    printf("page fault rate:      %.4f\n", (float)disk_reads / no_events);
+     printf("page fault rate:      %.4f\n", (float)disk_reads / no_events);
 /*************************************************************************** */
+    writeToFile(R);
+    free(pageTable);
     fclose(trace);
-    free(frameTable);
+
+    // return R;
+}
+
+
+
+
+
+void printFrames(){
+    printf("Print frames: %d\n", numFrames);
+    numFrames = 1;
+}
+
+
+
+
+int main(int argc, char *argv[]) {
+    // Simulating the VM process. 
+    char* workloadSizes[] = {"1", "10", "100", "1000", 
+                            "10000", "100000",  "1000000"};
+    int N = sizeof(workloadSizes)/sizeof(workloadSizes[0]);
+    
+    // struct result* Results;
+    // Results = Simulation(argc, argv);
+    // writeToFile(Results);
+    // printf("Printing out all arguments.\n");
+    // for (int i=0; i<N; i++){
+    //     for (int j=0; j<argc; j++){
+    //         if (j == 1){
+    //            argv[j] = workloadSizes[i];
+    //         }
+    //         printf("argv[%d] = %s\n", i, &(*argv[j]));
+    //     }
+    //     printf("\n------------------------------------------\n");
+    // }
+    struct result* result1;
+    struct result* result2;
+    argv[2] = "1";
+    Simulation(argc, argv);
+
+
+    argv[2] = "10";
+    Simulation(argc, argv);
+
+    printResult(result1);
+    printf("-----------------------------------------------------\n");
+    printResult(result2);
+
+
+
+    // for (int i=0; i<N; i++){
+    //     argv[]
+    //     Results = Simulation(argc, argv);
+    // }
+
+
+    // printFrames();
+    // numFrames = 10000;
+    // printFrames();
+
+
+
 
     return 0;
 }
