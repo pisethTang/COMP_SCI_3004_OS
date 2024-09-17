@@ -1,5 +1,1056 @@
-total memory frames:  3
+total memory frames:  1
 events in trace:      1000000
-total disk reads:     391266
-total disk writes:    57689
-page fault rate:      0.3913
+page fault rate:      0.6297
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.0171
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0012
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.6297
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.0171
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0009
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.6297
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.0292
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0009
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7161
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1924
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0591
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0073
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7161
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1507
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0457
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0045
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7161
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1587
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0476
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0049
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7924
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1993
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0356
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0061
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7924
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1547
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0256
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0045
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7924
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1642
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0276
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0046
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7634
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.2838
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0229
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0035
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7634
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.2577
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0159
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0028
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7634
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.2648
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0172
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0030
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.6297
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.0171
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0012
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.6297
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.0171
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0009
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.6297
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.0292
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0009
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0003
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7161
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1924
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0591
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0073
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7161
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1507
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0457
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0045
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7161
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1587
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0476
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0049
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0029
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7924
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1993
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0356
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0061
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7924
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1547
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0256
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0045
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7924
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.1642
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0276
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0046
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0039
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7634
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.2838
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0229
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0035
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7634
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.2577
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0159
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0028
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1
+events in trace:      1000000
+page fault rate:      0.7634
+total memory frames:  10
+events in trace:      1000000
+page fault rate:      0.2648
+total memory frames:  100
+events in trace:      1000000
+page fault rate:      0.0172
+total memory frames:  1000
+events in trace:      1000000
+page fault rate:      0.0030
+total memory frames:  10000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  100000
+events in trace:      1000000
+page fault rate:      0.0025
+total memory frames:  1000000
+events in trace:      1000000
+page fault rate:      0.0025
+Trace file: (null)Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: rand
+Trace file: 
+0f6cd071Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: rand
+Trace file: PTotal memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0012
+Algorithm: rand
+Trace file: cd0a0 R
+1Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: æ_Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: þŸTotal memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file:  Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: lru
+Trace file: ûTotal memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: lru
+Trace file: (null)
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: rand
+Trace file: 
+0f6cd071
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: rand
+Trace file: P
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0012
+Algorithm: rand
+Trace file: cd0a0 R
+1
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: æ_
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: 
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: þŸ
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file:  
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: lru
+Trace file: û
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: lru
+Trace file: (null)
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: rand
+Trace file: 
+0f6cd071
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: rand
+Trace file: P
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0012
+Algorithm: rand
+Trace file: cd0a0 R
+1
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: æ_
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: 
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: þŸ
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file:  
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: lru
+Trace file: û
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0012
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0009
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: clock
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0292
+Algorithm: clock
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0009
+Algorithm: clock
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1924
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0591
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0073
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1507
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0457
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0045
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1587
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0476
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0049
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1993
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0356
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0061
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1547
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0256
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0045
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1642
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0276
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0046
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7634
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.2838
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0229
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0035
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: rand
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7634
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.2577
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0159
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0028
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: lru
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7634
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.2648
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0172
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0030
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: clock
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: clock

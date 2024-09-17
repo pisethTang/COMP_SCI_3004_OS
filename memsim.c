@@ -13,6 +13,19 @@ typedef struct {
 
 enum repl {Random, Lru, Clock}; // Page replacement algorithms
 /************************************************************** */
+const char* get_algorithm_name(enum repl alg){
+    switch(alg){
+        case Random: 
+            return "rand";
+        case Lru:
+            return "lru";
+        case Clock:
+            return "clock";
+        default:
+            return "";
+    }
+}
+
 
 /************************ TO-DO *********************************** */
 int createMMU(int frames);
@@ -130,7 +143,9 @@ page selectVictim(enum repl mode) {
 struct result{
     int numberAccesses;
     int numFrames_;
-    float pageFaultRate;
+    double pageFaultRate;
+    int replAlgorithm;
+    char* traceFile;
 };
 
 void printResult(struct result* Result){
@@ -144,25 +159,27 @@ void writeToFile(struct result* Result){
     int no_events = Result -> numberAccesses;
     int numFrames = Result -> numFrames_;
     float pageFaultRate = Result -> pageFaultRate;
+    int replacementAlgorithm = Result -> replAlgorithm;
+    char* traceFiles = Result -> traceFile;
     
     
     FILE* output; // write to a file called output.txt
-    output = fopen("output.txt", "w");
+    output = fopen("output.txt", "a");
     if (output == NULL) {
         printf("Error opening output file\n");
         exit(-1);
     }
-    // float pageFaultRate = (float)disk_reads / no_events;
-    fprintf(output, "total memory frames:  %d\n", numFrames);
-    fprintf(output, "events in trace:      %d\n", no_events);
-    // fprintf(output, "total disk reads:     %d\n", disk_reads);
-    // fprintf(output, "total disk writes:    %d\n", disk_writes);
-    fprintf(output, "page fault rate:      %.4f\n", pageFaultRate);
 
+    // float pageFaultRate = (float)disk_reads / no_events;
+    fprintf(output, "Trace file: %s\n", traceFiles);
+    fprintf(output, "Total memory frames:  %d\n", numFrames);
+    fprintf(output, "Events in trace:      %d\n", no_events);
+    fprintf(output, "Page fault rate:      %.4f\n", pageFaultRate);
+    fprintf(output, "Algorithm: %s\n", (char*)get_algorithm_name(replacementAlgorithm));
     fclose(output); // Close the output file
 }
 
-void Simulation(int argc, char *argv[]){
+struct result* Simulation(int argc, char *argv[]){
     char *tracename;
     int page_number, frame_no, done;
     int do_line;
@@ -192,21 +209,16 @@ void Simulation(int argc, char *argv[]){
             exit(-1);
         }
 
-        if (strcmp(argv[3], "lru") == 0)
-            replace = Lru;
-        else if (strcmp(argv[3], "rand") == 0)
-            replace = Random;
-        else if (strcmp(argv[3], "clock") == 0)
-            replace = Clock;
+        if (strcmp(argv[3], "lru") == 0)        replace = Lru;
+        else if (strcmp(argv[3], "rand") == 0)  replace = Random;
+        else if (strcmp(argv[3], "clock") == 0) replace = Clock;
         else {
             printf("Replacement algorithm must be rand/lru/clock\n");
             exit(-1);
         }
 
-        if (strcmp(argv[4], "quiet") == 0)
-            debugmode = 0;
-        else if (strcmp(argv[4], "debug") == 0)
-            debugmode = 1;
+        if (strcmp(argv[4], "quiet") == 0)      debugmode = 0;
+        else if (strcmp(argv[4], "debug") == 0) debugmode = 1;
         else {
             printf("Debug mode must be quiet/debug\n");
             exit(-1);
@@ -224,6 +236,7 @@ void Simulation(int argc, char *argv[]){
     disk_reads = 0;
 
     do_line = fscanf(trace, "%x %c", &address, &rw);
+    // Begin reading in the trace file
     while (do_line == 2) {
         page_number = address >> pageoffset;
         frame_no = checkInMemory(page_number);
@@ -243,12 +256,12 @@ void Simulation(int argc, char *argv[]){
                     if (debugmode)
                         printf("Disk write    %8d\n", Pvictim.pageNo);
                 } else {
-                    if (debugmode)
-                        printf("Discard       %8d\n", Pvictim.pageNo);
+                    if (debugmode) printf("Discard       %8d\n", Pvictim.pageNo);
                 }
                 // Replace the page
                 frame_no = allocateFrame(page_number);
             }
+
         }
 
         if (rw == 'R') {
@@ -267,24 +280,32 @@ void Simulation(int argc, char *argv[]){
         do_line = fscanf(trace, "%x %c", &address, &rw);
     }
 
-    struct result* R;
-    
+    // char c;
+    // printf("Hello\n");
+    // Processing the result.
+    struct result* R = malloc(sizeof(struct result));
     R -> numberAccesses = no_events;
     R -> numFrames_ = numFrames;
-    R -> pageFaultRate = (float) disk_reads/disk_writes;
+    R -> pageFaultRate = (double) disk_reads/no_events;
+    R -> replAlgorithm = replace;
+    R -> traceFile = tracename;
+    // printf("Hello111\n");
+    // scanf("%c", &c);
 
 
 /*************************************************************************************** */
     printf("total memory frames:  %d\n", numFrames);
     printf("events in trace:      %d\n", no_events);
     printf("total disk reads:     %d\n", disk_reads);
-     printf("page fault rate:      %.4f\n", (float)disk_reads / no_events);
+    // printf("page fault rate:      %.4f\n", (float)disk_reads / no_events);
+    // printf("page fault rate:      %.4f\n", R -> pageFaultRate);
+    printf("page fault rate:      %f\n", R -> pageFaultRate);
 /*************************************************************************** */
-    writeToFile(R);
+    // writeToFile(R);
     free(pageTable);
     fclose(trace);
 
-    // return R;
+    return R;
 }
 
 
@@ -301,50 +322,48 @@ void printFrames(){
 
 int main(int argc, char *argv[]) {
     // Simulating the VM process. 
-    char* workloadSizes[] = {"1", "10", "100", "1000", 
+    char* workLoadSizes[] = {"1", "10", "100", "1000", 
                             "10000", "100000",  "1000000"};
-    int N = sizeof(workloadSizes)/sizeof(workloadSizes[0]);
-    
-    // struct result* Results;
-    // Results = Simulation(argc, argv);
-    // writeToFile(Results);
-    // printf("Printing out all arguments.\n");
-    // for (int i=0; i<N; i++){
-    //     for (int j=0; j<argc; j++){
-    //         if (j == 1){
-    //            argv[j] = workloadSizes[i];
-    //         }
-    //         printf("argv[%d] = %s\n", i, &(*argv[j]));
-    //     }
-    //     printf("\n------------------------------------------\n");
-    // }
-    struct result* result1;
-    struct result* result2;
-    argv[2] = "1";
-    Simulation(argc, argv);
+    int N = sizeof(workLoadSizes)/sizeof(workLoadSizes[0]);
 
+    char *TraceFiles[] = {
+        "Application_Traces/bzip.trace/bzip.trace",
+        "Application_Traces/gcc.trace/gcc.trace",
+        "Application_Traces/sixpack.trace/sixpack.trace",
+        "Application_Traces/swim.trace/swim.trace"
+    };  
+  
+    // Simulation(argc, argv);
 
-    argv[2] = "10";
-    Simulation(argc, argv);
-
-    printResult(result1);
-    printf("-----------------------------------------------------\n");
-    printResult(result2);
-
-
-
-    // for (int i=0; i<N; i++){
-    //     argv[]
-    //     Results = Simulation(argc, argv);
-    // }
-
-
-    // printFrames();
-    // numFrames = 10000;
-    // printFrames();
+    struct result* result1 = NULL;
+    // struct result* result2 = Simulation(argc, argv);
+    // printResult(result2);
+    for (int k=0; k<4; k++){
+        argv[1] = TraceFiles[k];
+        for (int j=Random; j<= Clock; j++){
+            for (int i=0; i<N; i++){
+                argv[3] = (char*)get_algorithm_name(j);
+                argv[2] = workLoadSizes[i];
+                // printf("Size: %s\n", argv[2]);
+                // printf("Algorithm: %s, Workload size: %s\n", argv[3], argv[2]);   
+                result1 = Simulation(argc, argv);
+                writeToFile(result1);       
+            }
+            printf("------------------- %s algorithm finished------------------\n", argv[3]);
+        }
+        printf("\n<<<<<<Trace: %s completed.>>>>>>>\n", argv[1]);
+    }
+   
 
 
 
+    if (result1  != NULL){
+        free(result1);
+        return 0;
+    }
+    else{
+        printf("Something went wrong\n");
+    }
 
     return 0;
 }

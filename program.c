@@ -1,13 +1,40 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+enum repl {
+  Rand,
+  Clock,
+  Lru
+};
+struct result{
+    int numberAccesses;
+    int numFrames_;
+    double pageFaultRate;
+    int replAlgorithm;
+    char* traceFile;
+};
+
 
 
 int main(){
-  int arr[5] = {10, 20, 30, 40, 50};
-  int* ptr = &arr[2]; // Pointer to the 3rd element in the array 
+  struct result* R = malloc(sizeof(struct result));
+  R -> traceFile = "Hello, world!";
+  printf("%s\n", R -> traceFile);
+  // // printf("%s", s);
 
-  printf("Value at arr[2]: %d\n", *ptr);
-  arr[2] = 100; // Writing at arr[2]
-  printf("New value at arr[2]: %d\n", arr[2]);
+  // char* arr[] = {
+  //   strcat(s, "1"), 
+  //   strcat(s, "2"),
+  //   strcat(s, "3"),
+  //   strcat(s, "4"),
+  //   strcat(s, "5"),
+  // };
 
+  // for (int i=0; i<5; i++){
+  //   printf("%s\n", arr[i]);
+  // }
+  free(R);
   return 0;
 }
