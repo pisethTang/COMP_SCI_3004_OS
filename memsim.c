@@ -321,6 +321,7 @@ void printFrames(){
 
 
 int main(int argc, char *argv[]) {
+    srand(time(NULL));
     // Simulating the VM process. 
     // char* workLoadSizes[] = {"1", "10", "100", "1000", 
     //                         "10000", "100000",  "1000000"};
