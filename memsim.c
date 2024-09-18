@@ -176,6 +176,7 @@ void writeToFile(struct result* Result){
     fprintf(output, "Events in trace:      %d\n", no_events);
     fprintf(output, "Page fault rate:      %.4f\n", pageFaultRate);
     fprintf(output, "Algorithm: %s\n", (char*)get_algorithm_name(replacementAlgorithm));
+    fprintf(output, "<-------------------------Result Loaded------------------------------->\n");
     fclose(output); // Close the output file
 }
 
@@ -323,37 +324,37 @@ void printFrames(){
 int main(int argc, char *argv[]) {
     srand(time(NULL));
     // Simulating the VM process. 
-    // char* workLoadSizes[] = {"1", "10", "100", "1000", 
-    //                         "10000", "100000",  "1000000"};
-    // int N = sizeof(workLoadSizes)/sizeof(workLoadSizes[0]);
+    char* workLoadSizes[] = {"1", "10", "100", "1000", 
+                            "10000", "100000",  "1000000"};
+    int N = sizeof(workLoadSizes)/sizeof(workLoadSizes[0]);
 
-    // char *TraceFiles[] = {
-    //     "Application_Traces/bzip.trace/bzip.trace",
-    //     "Application_Traces/gcc.trace/gcc.trace",
-    //     "Application_Traces/sixpack.trace/sixpack.trace",
-    //     "Application_Traces/swim.trace/swim.trace"
-    // };  
-  
-    Simulation(argc, argv);
+    char *TraceFiles[] = {
+        "Application_Traces/bzip.trace/bzip.trace",
+        "Application_Traces/gcc.trace/gcc.trace",
+        "Application_Traces/sixpack.trace/sixpack.trace",
+        "Application_Traces/swim.trace/swim.trace"
+    };  
+    
+    // Simulation(argc, argv);
 
-    // struct result* result1 = NULL;
-    // // struct result* result2 = Simulation(argc, argv);
-    // // printResult(result2);
-    // for (int k=0; k<4; k++){
-    //     argv[1] = TraceFiles[k];
-    //     for (int j=Random; j<= Clock; j++){
-    //         for (int i=0; i<N; i++){
-    //             argv[3] = (char*)get_algorithm_name(j);
-    //             argv[2] = workLoadSizes[i];
-    //             // printf("Size: %s\n", argv[2]);
-    //             // printf("Algorithm: %s, Workload size: %s\n", argv[3], argv[2]);   
-    //             result1 = Simulation(argc, argv);
-    //             writeToFile(result1);       
-    //         }
-    //         printf("------------------- %s algorithm finished------------------\n", argv[3]);
-    //     }
-    //     printf("\n<<<<<<Trace: %s completed.>>>>>>>\n", argv[1]);
-    // }
+    struct result* result1 = NULL;
+    // struct result* result2 = Simulation(argc, argv);
+    // printResult(result2);
+    for (int k=0; k<4; k++){
+        argv[1] = TraceFiles[k];
+        for (int j=Random; j<= Clock; j++){
+            argv[3] = (char*)get_algorithm_name(j);
+            for (int i=0; i<N; i++){
+                argv[2] = workLoadSizes[i];
+                // printf("Size: %s\n", argv[2]);
+                // printf("Algorithm: %s, Workload size: %s\n", argv[3], argv[2]);   
+                result1 = Simulation(argc, argv);
+                writeToFile(result1);       
+            }
+            printf("------------------- %s algorithm finished------------------\n", argv[3]);
+        }
+        printf("\n<<<<<<Trace: %s completed.>>>>>>>\n", argv[1]);
+    }
    
 
 

@@ -1,0 +1,876 @@
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0172
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0011
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0009
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0292
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0009
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1921
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0594
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0074
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1507
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0457
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0045
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1587
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0476
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0049
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1996
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0358
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0060
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1547
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0256
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0045
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1642
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0276
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0046
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7634
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.2838
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0229
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0035
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7634
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.2577
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0159
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0028
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7634
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.2648
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0172
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0030
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/swim.trace/swim.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0025
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0011
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0171
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0009
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.6297
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.0292
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0009
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/bzip.trace/bzip.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0003
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1921
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0592
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0075
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1507
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0457
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0045
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7161
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1587
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0476
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0049
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/gcc.trace/gcc.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0029
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1996
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0358
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0060
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: rand
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1547
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0256
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0045
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: lru
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1
+Events in trace:      1000000
+Page fault rate:      0.7924
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10
+Events in trace:      1000000
+Page fault rate:      0.1642
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100
+Events in trace:      1000000
+Page fault rate:      0.0276
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  1000
+Events in trace:      1000000
+Page fault rate:      0.0046
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  10000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
+Trace file: Application_Traces/sixpack.trace/sixpack.trace
+Total memory frames:  100000
+Events in trace:      1000000
+Page fault rate:      0.0039
+Algorithm: clock
+<-------------------------Result Loaded------------------------------->
