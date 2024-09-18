@@ -67,6 +67,7 @@ page *clock_select_victim(int page_number) {
         perror(progname);
         exit(EXIT_FAILURE);
     }
+
     victim->page = target->page;
     victim->reference = target->reference;
     victim->modified = target->modified;

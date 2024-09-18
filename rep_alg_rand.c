@@ -12,6 +12,7 @@ extern page *page_table;
 int page_count;
 
 
+
 int rand_create_mmu(int frame_count) {
     if (default_create_mmu(frame_count)) {
         page_count = frame_count;
@@ -19,6 +20,7 @@ int rand_create_mmu(int frame_count) {
     }
     return 0;
 }
+
 
 page *rand_select_victim(int page_number) {
     page *victim = default_select_victim(page_number);
@@ -38,6 +40,7 @@ page *rand_select_victim(int page_number) {
     
     return victim;
 }
+
 
 mmu_impl rand_mmu = {
     rand_create_mmu,
