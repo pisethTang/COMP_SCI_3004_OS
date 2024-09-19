@@ -19,22 +19,19 @@ struct result{
 
 
 int main(){
-  struct result* R = malloc(sizeof(struct result));
-  R -> traceFile = "Hello, world!";
-  printf("%s\n", R -> traceFile);
-  // // printf("%s", s);
+  int Trace1[4] = {};
 
-  // char* arr[] = {
-  //   strcat(s, "1"), 
-  //   strcat(s, "2"),
-  //   strcat(s, "3"),
-  //   strcat(s, "4"),
-  //   strcat(s, "5"),
-  // };
+  for (int i = 0; i < 4; i++){
+    Trace1[i] = 0;
+  }
+  
+  for (int i = 0; i < 4; i++){
+    // Trace1[i] = 0;
+    printf("%d\n", &i);
+  }
 
-  // for (int i=0; i<5; i++){
-  //   printf("%s\n", arr[i]);
-  // }
-  free(R);
+
+
+
   return 0;
 }

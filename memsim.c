@@ -281,17 +281,14 @@ struct result* Simulation(int argc, char *argv[]){
         do_line = fscanf(trace, "%x %c", &address, &rw);
     }
 
-    // char c;
-    // printf("Hello\n");
     // Processing the result.
     struct result* R = malloc(sizeof(struct result));
-    R -> numberAccesses = no_events;
-    R -> numFrames_ = numFrames;
-    R -> pageFaultRate = (double) disk_reads/no_events;
-    R -> replAlgorithm = replace;
-    R -> traceFile = tracename;
-    // printf("Hello111\n");
-    // scanf("%c", &c);
+    R -> traceFile = tracename;                         // The trace filename
+    R -> numberAccesses = no_events;                    // number of memory accesses
+    R -> numFrames_ = numFrames;                        // number of frames in physical memory
+    R -> pageFaultRate = (double) disk_reads/no_events; // The page fault rate 
+    R -> replAlgorithm = replace;                       // The page replacement algorithm
+ 
 
 
 /*************************************************************************************** */
@@ -313,19 +310,14 @@ struct result* Simulation(int argc, char *argv[]){
 
 
 
-void printFrames(){
-    printf("Print frames: %d\n", numFrames);
-    numFrames = 1;
-}
-
-
 
 
 int main(int argc, char *argv[]) {
     srand(time(NULL));
+
     // Simulating the VM process. 
-    char* workLoadSizes[] = {"1", "10", "100", "1000", 
-                            "10000", "100000",  "1000000"};
+    char* workLoadSizes[] = {"1", "2", "4", "8", 
+                            "16", "25", "32",  "64", "128", "256", "512", "1024", ""};
     int N = sizeof(workLoadSizes)/sizeof(workLoadSizes[0]);
 
     char *TraceFiles[] = {
@@ -334,12 +326,17 @@ int main(int argc, char *argv[]) {
         "Application_Traces/sixpack.trace/sixpack.trace",
         "Application_Traces/swim.trace/swim.trace"
     };  
-    
+
+    // int* t1 = malloc(sizeof(int) * 100000);
+    // int* t2 = malloc(sizeof(int) * 100000);
+    // int* t3 = malloc(sizeof(int) * 100000);
+    // int* t4 = malloc(sizeof(int) * 100000);
+
+
+
     // Simulation(argc, argv);
 
     struct result* result1 = NULL;
-    // struct result* result2 = Simulation(argc, argv);
-    // printResult(result2);
     for (int k=0; k<4; k++){
         argv[1] = TraceFiles[k];
         for (int j=Random; j<= Clock; j++){
