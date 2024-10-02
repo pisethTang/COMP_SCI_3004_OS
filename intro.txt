@@ -1,0 +1,32 @@
++ Objective: Create a high performance network server for pattern analysis capable of managing incoming connections, processsing text data, and analyzing patterns within the data. 
+
++ Hands-on experience with concurrent programming, socket handling, and understanding the differences between blocking and non-blokcing I/O.
+
++ Goal: Write a multi-threaded network server: that listens for incoming connections on your chosen port. The server should listen to a networking port (>1024). Ensure that the server efficiently manages multiple simultaneous connections. The program should create a new thread for each incoming connection to handle client communication. the approach has to allow multiple clients to connect simultaneously. In each thread, implement non-blocking reads from the sockets to efficiently receive and store data in one shared data structure - a list. Every line read is linked into that shared list that is the same across all threads. 
+
+README draft1: 
+- A document detialing the commands used to run your server and client prgrams (e.g., Client program using netcat) to send data to the server.
+
+
+
+
+
+Grading Criteria: 
+
++ Part 1: 80% (will be marked using automatic script)
+-  The network server can accept incoming connections from a listening socket and is non-blocking: 10% 
+- Efficient handling of multiple connections using threads, ensuring the server remainds responsive: 10% 
+- Correct log printed: 15% 
+- Books are received and printed into files correctly 30% 
+- Scales to 10 threads: 15% 
+
++ Part 2: 20% (will be accessed both automatically and manually)
+- Pattern analysis frequency is correct: 10% 
+- Results printed at intervals: 5% 
+- Book titles sorted by the most frequent occurences of the selected pattern: 5% 
+
+
+
+++++++++++++++++++++NOTE-TO-SELF++++++++++++++++++++++++++++++++++++++
+- Learn how to create readable README.md files
+- 
