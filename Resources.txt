@@ -1,0 +1,19 @@
+- Search for topics on Google, e.g., TCP/IP or firewall or DNS or HTTP 
+- See various links presented.
+- Read the initial page which explain things in simpler terms.
+- Once we have a general idea on how things work and practical applications, then we go for technical details. 
+
+
+Links to source: 
+https://www.quora.com/I-need-a-crash-course-on-computer-networking-Whats-the-most-effective-way-of-learning-about-the-topic
+
+
+
+
+
+
+
+
+
+
+
