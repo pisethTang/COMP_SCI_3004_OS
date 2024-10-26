@@ -5,7 +5,25 @@
 
 
 
+# Multi-Threaded Network Server for Pattern Analysis
+
+## Overview
+
+This project implements a multi-threaded network server capable of managing incoming connections, processing text data, and analyzing patterns within the data.
+
+## Requirements
+
+- GCC (GNU Compiler Collection)
+- pthread library for threading support
+
+## Running the Server
+
+1. **Compile the program:**
+   To compile the server, run:
 
 
+
+2. **Start the server:**
+To start the server, run:
 
 
