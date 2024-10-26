@@ -22,7 +22,7 @@ struct Server server_constructor(int domain, int service, int protocol,
     server.address.sin_addr.s_addr = htonl(interface); // does the same thing for a long
 
 
-    server.socket = socket(domain, );
+    // server.socket = socket(domain, );
 
     return server;
 }
