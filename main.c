@@ -1,6 +1,6 @@
 #include <pthread.h>
 // #include "assignment3.c"
-#include "analysis_thread.c"
+// #include "analysis_thread.c"
 
 #define PATTERN "happy"
 
@@ -12,7 +12,7 @@ int main() {
     pthread_create(&analysis_thread, NULL, analyze_pattern, &args);
 
     // Start the server
-    main(); // Call the server's main function
+    // main(); // Call the server's main function
 
     pthread_join(analysis_thread, NULL);
     return 0;
