@@ -7,6 +7,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <netinet/in.h>
 
@@ -36,12 +37,65 @@ int connection_counter = 0;
 
 
 
-void init_shared_list(SharedList* list){}
+void init_shared_list(SharedList* list){
+    list -> head = NULL;
+    list -> tail = NULL;
+    pthread_mutex_init(&list -> lock, NULL);
+}
 
-void add_node(SharedList* list, char* line){}
+
+
+void add_node(SharedList* list, char* line){
+    Node* new_node = malloc(sizeof(Node));
+    new_node -> line = strdup(line);
+    new_node -> next = NULL;
+    new_node -> book_next = NULL;
+
+    pthread_mutex_lock(&list -> lock);
+    if (list -> head == NULL){
+        list -> head = new_node;
+        list -> tail = new_node;
+    }
+    else{
+        list -> tail -> next = new_node;
+        list -> tail = new_node;
+    }
+
+    printf("Added node: %s", line);
+    pthread_mutex_unlock(&list -> lock);
+}
+
 
 void* handle_client(void* client_socket){
-    return 0;
+    int socket = *(int*)client_socket;
+    char buffer[BUFFER_SIZE];
+    char* book_lines[MAX_CONNECTIONS];
+    int book_line_count = 0;
+
+    while (1){
+        ssize_t bytes_received = recv(socket, buffer, sizeof(buffer) - 1, 0);
+        if (bytes_received <= 0) break;
+
+        buffer[bytes_received] = '\0';
+        char* line = strtok(buffer, "\n");
+        while (line != NULL){
+            add_node(&shared_list, line);
+            book_lines[book_line_count++] = strdup(line);
+            line = strtok(NULL, "\n");
+        }
+    }
+    char filename[30];
+    snprintf(filename, sizeof(filename), "book_%02d.txt", connection_counter++);
+    FILE* file = fopen(filename, "w");
+    for (int i = 0; i< book_line_count; i++){
+        fprintf(file, "%s\n", book_lines[i]);
+        free(book_lines[i]);
+    }
+    fclose(file);
+    printf("Saved %s with %d lines.\n", filename, book_line_count);
+    close(socket);
+    free(client_socket);
+    return NULL;
 }
 
 
