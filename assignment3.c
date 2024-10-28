@@ -1,154 +1,161 @@
+#include <errno.h>
+#include <netinet/in.h>
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <sys/types.h>
 #include <unistd.h>
-#include <pthread.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 
-#define MAX_CONNECTIONS 10 
-#define BUFFER_SIZE 1024 
+struct Node {
+    char *data;
+    struct Node *next;
+    struct Node *book_next;
+};
 
-typedef struct Node {
-    char* line;
-    struct Node* next;
-    struct Node* book_next;
-} Node;
-
-typedef struct SharedList {
-    Node* head;
-    Node* tail;
+struct NodeList {
+    struct Node *list_head;
+    struct Node *book_head;
+    int book_count;
     pthread_mutex_t lock;
-} SharedList;
+    pthread_mutex_t book_lock;
+};
 
-SharedList shared_list;
-int connection_counter = 0;
-
-void init_shared_list(SharedList* list) {
-    list->head = NULL;
-    list->tail = NULL;
-    pthread_mutex_init(&(list->lock), NULL);
-}
-
-void add_node(SharedList* list, char* line) {
-    Node* new_node = malloc(sizeof(Node));
-    new_node->line = strdup(line);
+struct Node *create_node(const char *data) {
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    new_node->data = strdup(data);
     new_node->next = NULL;
     new_node->book_next = NULL;
-
-    pthread_mutex_lock(&list->lock);
-    if (list->head == NULL) {
-        list->head = new_node;
-        list->tail = new_node;
-    } else {
-        list->tail->next = new_node;
-        list->tail = new_node;
-    }
-    printf("Added node: %s\n", line);
-    pthread_mutex_unlock(&list->lock);
+    return new_node;
 }
 
-void* handle_client(void* client_socket) {
-    int sock = *(int*)client_socket;
-    char buffer[BUFFER_SIZE];
-    char* book_lines[MAX_CONNECTIONS];
-    int book_line_count = 0;
+void add_node(struct NodeList *nodes, const char *data) {
+    struct Node *new_node = create_node(data);
+    pthread_mutex_lock(&nodes->lock);
+    
+    if (nodes->list_head == NULL) {
+        nodes->list_head = new_node;
+    } else {
+        struct Node *current = nodes->list_head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = new_node;
+    }
+
+    if (nodes->book_head == NULL) {
+        nodes->book_head = new_node;
+    } else {
+        struct Node *book_current = nodes->book_head;
+        while (book_current->book_next != NULL) {
+            book_current = book_current->book_next;
+        }
+        book_current->book_next = new_node;
+    }
+    pthread_mutex_unlock(&nodes->lock);
+}
+
+void *copy_text(void *arg) {
+    int socket = *(int *)arg;
+    free(arg);
+    char buffer[2048];
+
+    struct timeval timeout = {5, 0};
+    setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const char *)&timeout, sizeof(timeout));
+
+    struct NodeList *nodes = (struct NodeList *)malloc(sizeof(struct NodeList));
+    nodes->list_head = NULL;
+    nodes->book_head = NULL;
+    nodes->book_count = 0;
+    pthread_mutex_init(&nodes->lock, NULL);
+    pthread_mutex_init(&nodes->book_lock, NULL);
 
     while (1) {
-        ssize_t bytes_received = recv(sock, buffer, sizeof(buffer) - 1, 0);
-        if (bytes_received <= 0) break;
-
-        buffer[bytes_received] = '\0';
-        char* line = strtok(buffer, "\n");
-        while (line != NULL) {
-            add_node(&shared_list, line);
-            book_lines[book_line_count++] = strdup(line);
-            line = strtok(NULL, "\n");
-        }
+        bzero(buffer, sizeof(buffer));
+        int text_length = recv(socket, buffer, sizeof(buffer) - 1, 0);
+        if (text_length <= 0) break;
+        add_node(nodes, buffer);
+        printf("Added node with data: %s\n", buffer);
     }
 
-    char filename[30];
-    snprintf(filename, sizeof(filename), "book_%02d.txt", connection_counter++);
-    FILE* file = fopen(filename, "w");
-    for (int i = 0; i < book_line_count; i++) {
-        fprintf(file, "%s\n", book_lines[i]);
-        free(book_lines[i]);
+    pthread_mutex_lock(&nodes->book_lock);
+    nodes->book_count++;
+    char book_name[1024];
+    snprintf(book_name, sizeof(book_name), "book_%02d.txt", nodes->book_count);
+
+    FILE *new_book = fopen(book_name, "w");
+    struct Node *current = nodes->book_head;
+    while (current != NULL) {
+        fprintf(new_book, "%s", current->data);
+        current = current->book_next;
     }
-    fclose(file);
-    printf("Saved %s with %d lines.\n", filename, book_line_count);
-    close(sock);
-    free(client_socket);
+    fclose(new_book);
+    pthread_mutex_unlock(&nodes->book_lock);
+    free(nodes);
+    close(socket);
     return NULL;
 }
 
-int main(int argc, char* argv[]) {
-    if (argc < 5) {
-        fprintf(stderr, "Usage: %s -l <port> -p <passphrase>\n", argv[0]);
-        return EXIT_FAILURE;
-    }
+int setup_server_socket(int argc, char *argv[]) {
+    int port = 1234;
+    int option;
 
-    int port = 0;
-    char* passphrase = NULL;
-
-    // Parse command-line arguments
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "-l") == 0 && i + 1 < argc) {
-            port = atoi(argv[++i]);
-        } else if (strcmp(argv[i], "-p") == 0 && i + 1 < argc) {
-            passphrase = argv[++i];
+    while ((option = getopt(argc, argv, "l:p")) != -1) {
+        if (option == 'l') port = atoi(optarg);
+        else if (option == 'p') printf("Process ID: %d\n", getpid());
+        else {
+            fprintf(stderr, "Usage: %s [-l port_number] [-p]\n", argv[0]);
+            exit(EXIT_FAILURE);
         }
     }
 
-    if (port == 0 || passphrase == NULL) {
-        fprintf(stderr, "Invalid arguments. Please specify both -l <port> and -p <passphrase>.\n");
-        return EXIT_FAILURE;
+    return port;
+}
+
+int create_and_bind_socket(int port) {
+    struct sockaddr_in serv_addr;
+    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd < 0) perror("ERROR opening socket");
+
+    bzero((char *)&serv_addr, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = INADDR_ANY;
+    serv_addr.sin_port = htons((uint16_t)port);
+
+    if (bind(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+        perror("ERROR on binding");
+        exit(1);
     }
+    listen(sockfd, 5);
+    return sockfd;
+}
 
-    printf("Starting server with port: %d and passphrase: %s\n", port, passphrase);
-
-    int server_socket;
-    struct sockaddr_in server_addr, client_addr;
-    socklen_t client_len = sizeof(client_addr);
-
-    init_shared_list(&shared_list);
-
-    if ((server_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-        perror("Socket creation failed");
-        exit(EXIT_FAILURE);
-    }
-
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = INADDR_ANY;
-    server_addr.sin_port = htons(port);  // Use specified port
-
-    if (bind(server_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        perror("Bind failed");
-        close(server_socket);
-        exit(EXIT_FAILURE);
-    }
-
-    if ((listen(server_socket, MAX_CONNECTIONS)) < 0) {
-        perror("Listening failed");
-        close(server_socket);
-        exit(EXIT_FAILURE);
-    }
-
-    printf("Server listening on port %d\n", port);
-
+void accept_and_handle_clients(int sockfd) {
+    struct sockaddr_in cli_addr;
     while (1) {
-        int* client_socket = malloc(sizeof(int));
-        *client_socket = accept(server_socket, (struct sockaddr*)&client_addr, &client_len);
-        if (*client_socket < 0) {
-            perror("Accepting failed");
-            free(client_socket);
+        socklen_t clilen = sizeof(cli_addr);
+        int *newsockfd = malloc(sizeof(int));
+        *newsockfd = accept(sockfd, (struct sockaddr *)&cli_addr, &clilen);
+        if (*newsockfd < 0) {
+            free(newsockfd);
+            perror("ERROR on accept");
             continue;
         }
-        printf("Accepted connection from %s:%d\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
-        pthread_t tid;
-        pthread_create(&tid, NULL, handle_client, client_socket);
-        pthread_detach(tid);
+        pthread_t thread_id;
+        if (pthread_create(&thread_id, NULL, copy_text, (void *)newsockfd) != 0) {
+            perror("Failed to create thread");
+            free(newsockfd);
+        }
+        pthread_detach(thread_id);
     }
+}
 
-    close(server_socket);
+int main(int argc, char *argv[]) {
+    int port = setup_server_socket(argc, argv);
+    int sockfd = create_and_bind_socket(port);
+    accept_and_handle_clients(sockfd);
+    close(sockfd);
     return 0;
 }
