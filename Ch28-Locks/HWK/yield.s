@@ -1,0 +1,34 @@
+.var mutex 
+.var count 
+
+
+
+.main 
+.top 
+
+
+.acquire 
+mov %1, %ax 
+xchg %ax, mutex # atomic swap of 1 and mutex 
+test $0, %ax    # if we get 0 back; lock is free! 
+je .acquire_done 
+yield           # if not, yield and try again 
+
+
+
+# Critical section 
+mov count, %ax # get the value at the address 
+add $1, %ax    # increment it 
+mov %ax, count # store it back 
+
+
+# Release lock 
+mov $0, mutex 
+
+
+# See if we're still looping 
+sub $1, %bx
+test $0, %bx 
+jgt .top 
+
+halt 
